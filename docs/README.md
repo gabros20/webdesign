@@ -27,17 +27,28 @@ elaboration and shortcuts on top of it.
 
 Two folders separate *what was gathered* from *what shipped*:
 
-- **[research/](research/)** — the research record: where the skill's content came from and what
-  was deliberately left out. Version-agnostic; the header states its status.
+- **[research/](research/)** — the research record: where the skill's content came from, what was
+  deliberately left out, and the analysis behind later changes. Version-agnostic; each header
+  states its status.
   - [research/provenance.md](research/provenance.md) — the source→target mapping that fed v1.0.0
-    (which reference file came from which part of the source corpus, and what was stripped).
-- **[designs/](designs/)** — implementation designs that shipped, one per release that changed
-  behavior. **The filename carries the release version** (`v<version>-<topic>.md`) and the header
-  states the version + date; [CHANGELOG.md](../CHANGELOG.md) is the cross-reference.
+    (which reference file came from which part of the Brease Factory source corpus, and what was
+    stripped).
+  - [research/stack-agnosticism.md](research/stack-agnosticism.md) — the stack-coupling audit and
+    the "how much frontend code belongs in a design skill" question that fed v1.1.0 (the inclusion
+    test, the options weighed, the examples-not-endorsements rule).
+- **[designs/](designs/)** — implementation designs that shipped, one per release worth recording
+  (skill behavior or its presentation). **The filename carries the release version**
+  (`v<version>-<topic>.md`) and the header states the version + date;
+  [CHANGELOG.md](../CHANGELOG.md) is the cross-reference.
   - [designs/v1.0.0-initial-synthesis.md](designs/v1.0.0-initial-synthesis.md) — why the skill is a
     router over references rather than one long document, the six-stage arc, the `SKILL.md` line
     budget, and how v1.0.0 was actually built (a staged multi-agent synthesis run over the source
     corpus, closed out with a four-way adversarial review).
+  - [designs/v1.0.1-color-identity.md](designs/v1.0.1-color-identity.md) — the raspberry accent
+    and the per-skill OKLCH hue-as-identity system (hold L/C, vary hue; the reskin checklist).
+  - [designs/v1.1.0-stack-posture.md](designs/v1.1.0-stack-posture.md) — the scope rule and the
+    stack-agnostic build posture (Next.js + Tailwind reframed as the worked example; the
+    pattern→your-stack mapping table; the demoted JS appendix).
 
 Lifecycle: research lands in `research/` → when acted on, an implementation design lands in
 `designs/` as `v<next-version>-<topic>.md` → the release bumps `version:` in

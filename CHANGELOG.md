@@ -12,6 +12,17 @@ tagged in git as `v<version>`. Every release PR updates **both** plus this file,
 `scripts/check-sync` (version sync across frontmatter/body/changelog, no orphan references, every
 cross-link and anchor resolved, internal-tooling leakage guard — CI-enforced on every PR).
 
+## [Unreleased]
+
+### Added
+- Docs timeline backfill: `research/stack-agnosticism.md` (the coupling audit + scope question
+  that fed 1.1.0), `designs/v1.1.0-stack-posture.md`, and `designs/v1.0.1-color-identity.md`
+  (the per-skill hue-identity system + reskin checklist); docs index updated.
+
+### Changed
+- Provenance docs now name the source by brand — the skill was extracted from **Brease Factory**,
+  an internal website-rebuild pipeline/CLI (brand named, repo internals still not referenced).
+
 ## [1.1.0] — 2026-07-15
 
 ### Changed

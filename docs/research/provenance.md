@@ -5,12 +5,13 @@
 > [CHANGELOG](../../CHANGELOG.md)).
 
 Where each reference file in `skills/webdesign/references/` came from, and what was deliberately
-left behind. The source was a production website-rebuild pipeline's design corpus: skills and agent
-briefs written for a very different context (an automated multi-phase site-rebuild system with run
-directories, phase codes, and CMS wiring) that nonetheless contained a complete, load-bearing body
-of web-design knowledge worth porting on its own. Source names are generalized below — the
-pipeline coupling itself was stripped, not ported; external citations for the technique content
-live in the skill's own `references/SOURCES.md`, not here.
+left behind. The source was the design corpus of **Brease Factory** — an internal website-rebuild
+pipeline/CLI whose tool skills were extracted and generalized here for standalone reuse: skills and
+agent briefs written for a very different context (an automated multi-phase site-rebuild system
+with run directories, phase codes, and CMS wiring) that nonetheless contained a complete,
+load-bearing body of web-design knowledge worth porting on its own. Individual source-skill names
+are generalized below — the pipeline coupling itself was stripped, not ported; external citations
+for the technique content live in the skill's own `references/SOURCES.md`, not here.
 
 ## The corpus
 
