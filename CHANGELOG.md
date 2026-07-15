@@ -17,6 +17,8 @@ cross-link and anchor resolved, internal-tooling leakage guard — CI-enforced o
 ### Changed
 - Site: reference map rebuilt from a stretched card grid to a stage→chips definition list
   (kills the craft-card whitespace voids and the orphan card).
+- Site: hero terminal now shows the usage moment (a natural-language ask) instead of install;
+  install consolidated in "Start here" with a short use beat (family-site alignment with orchestrate).
 
 ## [1.0.1] — 2026-07-15
 
