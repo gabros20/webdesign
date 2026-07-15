@@ -1,20 +1,20 @@
 #!/usr/bin/env bash
-# Install the orchestrate skill into your agent's user-level skills directory.
+# Install the webdesign skill into your agent's user-level skills directory.
 # Usage: ./install.sh [claude|codex|cursor|antigravity|opencode|grok|hermes|agents|all]
 # (default: claude)
 #
 # `agents` = the cross-agent standard path ~/.agents/skills — Codex reads it natively,
 # and Cursor, opencode, Copilot, Amp (and others) read it too. `all` = claude + agents,
 # which covers most hosts without littering every vendor dir. Prefer
-# `npx skills add gabros20/orchestrate` when you have Node — it maps 70+ agents itself.
+# `npx skills add gabros20/webdesign` when you have Node — it maps 70+ agents itself.
 set -euo pipefail
 here="$(cd "$(dirname "$0")" && pwd)"
 target="${1:-claude}"
 install_to() {
-  dest="$1/orchestrate"
+  dest="$1/webdesign"
   mkdir -p "$(dirname "$dest")"
   rm -rf "$dest"
-  cp -R "$here/skills/orchestrate" "$dest"
+  cp -R "$here/skills/webdesign" "$dest"
   echo "installed → $dest"
 }
 case "$target" in
@@ -29,4 +29,4 @@ case "$target" in
   all)          install_to "$HOME/.claude/skills"; install_to "$HOME/.agents/skills" ;;
   *) echo "usage: ./install.sh [claude|codex|cursor|antigravity|opencode|grok|hermes|agents|all]" >&2; exit 1 ;;
 esac
-echo "Invoke with /orchestrate (or your host's skill invocation) — see README for the control surface."
+echo "Invoke with /webdesign (or your host's skill invocation) — see README for the control surface."
