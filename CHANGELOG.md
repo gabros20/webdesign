@@ -12,6 +12,12 @@ tagged in git as `v<version>`. Every release PR updates **both** plus this file,
 `scripts/check-sync` (version sync across frontmatter/body/changelog, no orphan references, every
 cross-link and anchor resolved, internal-tooling leakage guard — CI-enforced on every PR).
 
+## [Unreleased]
+
+### Changed
+- Site: reference map rebuilt from a stretched card grid to a stage→chips definition list
+  (kills the craft-card whitespace voids and the orphan card).
+
 ## [1.0.1] — 2026-07-15
 
 ### Changed

@@ -131,18 +131,23 @@
   .steps span code{font-size:12px; background:var(--code-bg); padding:1px 4px; border-radius:4px; overflow-wrap:anywhere}
 
   /* reference cards, grouped by stage */
-  .cards{display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:14px; margin-top:20px; align-items:start}
-  .card{background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:16px 18px 14px; display:flex; flex-direction:column; gap:8px}
-  .card:hover{border-color:var(--accent)}
-  .card .top{display:flex; justify-content:space-between; align-items:flex-start; gap:10px}
-  .card h3{margin:0; font-family:ui-monospace,Menlo,monospace; font-size:15px; letter-spacing:-.01em; display:flex; align-items:center; gap:8px}
-  .card h3 .lu{color:var(--accent); width:16px; height:16px}
-  .card h3 em{font-style:normal; font-size:11px; color:var(--accent); border:1px solid var(--accent); border-radius:999px; padding:1px 8px; margin-left:auto; font-family:system-ui}
-  .card ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:5px}
-  .card li{font-size:12.5px}
-  .card li code{background:var(--code-bg); padding:1px 6px; border-radius:4px; font-size:12px}
-  .card li a{text-decoration:none}
-  .card li a:hover{text-decoration:underline}
+  /* reference map — stage → chips definition list (voids impossible by construction; lighter
+     than the card-heavy neighbouring sections, so it varies the page rhythm) */
+  .refmap{margin-top:20px}
+  .refrow{display:grid; grid-template-columns:200px 1fr; gap:8px 18px; padding:14px 0; align-items:start}
+  .refrow + .refrow{border-top:1px solid var(--line)}
+  .refrow dt, .refrow dd{margin:0}
+  .reflabel{display:flex; align-items:center; gap:8px; font-family:ui-monospace,Menlo,monospace; font-size:14px; letter-spacing:-.01em; color:var(--ink)}
+  .reflabel .lu{color:var(--accent); width:16px; height:16px; flex:none}
+  .reflabel .ct{margin-left:auto; font-size:11px; color:var(--accent); border:1px solid var(--accent); border-radius:999px; padding:1px 8px; font-family:system-ui; flex:none}
+  .refchips{display:flex; flex-wrap:wrap; gap:7px 8px; align-items:baseline}
+  .refchips .ref{display:inline-flex; align-items:baseline; gap:6px}
+  .refchips code{background:var(--code-bg); padding:2px 8px; border-radius:5px; font-size:12px; white-space:nowrap}
+  .refchips .d{font-size:11.5px; color:var(--muted)}
+  @media (max-width:640px){
+    .refrow{grid-template-columns:1fr; gap:9px 0}
+    .reflabel .ct{margin-left:8px}
+  }
 
   /* tables */
   .tblwrap{overflow-x:auto; border:1px solid var(--line); border-radius:8px; margin-top:20px}
@@ -197,7 +202,6 @@
     .prow{flex-direction:column; align-items:flex-start}
     .prow .arr{transform:rotate(90deg); margin-left:18px}
   }
-  @media (prefers-reduced-motion:no-preference){ .card{transition:border-color .15s ease} }
 </style>
 </head>
 <body>
@@ -307,22 +311,36 @@ npx skills add gabros20/webdesign
 <section id="refs">
   <h2><svg class="lu" aria-hidden="true"><use href="#lu-files"/></svg>Reference map</h2>
   <p>22 references, grouped by the stage they serve. Every one is copy-pasteable rather than abstract — the whole point of the router is that you never read all 22 at once.</p>
-  <div class="cards">
-    <div class="card"><h3><svg class="lu" aria-hidden="true"><use href="#lu-sliders-horizontal"/></svg>1 · direction<em>2</em></h3>
-      <ul><li><code>frontend-design-principles.md</code></li><li><code>design-direction.md</code></li></ul></div>
-    <div class="card"><h3><svg class="lu" aria-hidden="true"><use href="#lu-files"/></svg>2 · structure<em>1</em></h3>
-      <ul><li><code>section-archetypes.md</code></li></ul></div>
-    <div class="card"><h3><svg class="lu" aria-hidden="true"><use href="#lu-layers"/></svg>3 · craft<em>12</em></h3>
-      <ul><li><code>section-design-workflow.md</code> — the router</li><li><code>layout-and-composition.md</code></li><li><code>typography.md</code></li><li><code>color-and-rhythm.md</code></li><li><code>depth-and-texture.md</code></li><li><code>decoration.md</code></li><li><code>imagery.md</code></li><li><code>motion-and-interaction.md</code></li><li><code>experimental-and-creative.md</code></li><li><code>niche-and-vertical-design.md</code></li><li><code>trust-proof-and-structure.md</code></li><li><code>persuasion-and-conversion.md</code></li></ul></div>
-    <div class="card"><h3><svg class="lu" aria-hidden="true"><use href="#lu-file-output"/></svg>4 · build<em>2</em></h3>
-      <ul><li><code>frontend-build-patterns.md</code></li><li><code>tailwind-v4-theme.md</code></li></ul></div>
-    <div class="card"><h3><svg class="lu" aria-hidden="true"><use href="#lu-eye"/></svg>5 · art review<em>1</em></h3>
-      <ul><li><code>art-review.md</code></li></ul></div>
-    <div class="card"><h3><svg class="lu" aria-hidden="true"><use href="#lu-search-check"/></svg>6 · critique<em>2</em></h3>
-      <ul><li><code>design-critique.md</code></li><li><code>anti-default-catalog.md</code></li></ul></div>
-    <div class="card"><h3><svg class="lu" aria-hidden="true"><use href="#lu-scroll-text"/></svg>cross-cutting<em>2</em></h3>
-      <ul><li><code>design-thinking.md</code></li><li><code>SOURCES.md</code> — traces every technique to its source</li></ul></div>
-  </div>
+  <dl class="refmap">
+    <div class="refrow">
+      <dt class="reflabel"><svg class="lu" aria-hidden="true"><use href="#lu-sliders-horizontal"/></svg>1 · direction<span class="ct">2</span></dt>
+      <dd class="refchips"><span class="ref"><code>frontend-design-principles.md</code></span><span class="ref"><code>design-direction.md</code></span></dd>
+    </div>
+    <div class="refrow">
+      <dt class="reflabel"><svg class="lu" aria-hidden="true"><use href="#lu-files"/></svg>2 · structure<span class="ct">1</span></dt>
+      <dd class="refchips"><span class="ref"><code>section-archetypes.md</code></span></dd>
+    </div>
+    <div class="refrow">
+      <dt class="reflabel"><svg class="lu" aria-hidden="true"><use href="#lu-layers"/></svg>3 · craft<span class="ct">12</span></dt>
+      <dd class="refchips"><span class="ref"><code>section-design-workflow.md</code><i class="d">— the router</i></span><span class="ref"><code>layout-and-composition.md</code></span><span class="ref"><code>typography.md</code></span><span class="ref"><code>color-and-rhythm.md</code></span><span class="ref"><code>depth-and-texture.md</code></span><span class="ref"><code>decoration.md</code></span><span class="ref"><code>imagery.md</code></span><span class="ref"><code>motion-and-interaction.md</code></span><span class="ref"><code>experimental-and-creative.md</code></span><span class="ref"><code>niche-and-vertical-design.md</code></span><span class="ref"><code>trust-proof-and-structure.md</code></span><span class="ref"><code>persuasion-and-conversion.md</code></span></dd>
+    </div>
+    <div class="refrow">
+      <dt class="reflabel"><svg class="lu" aria-hidden="true"><use href="#lu-file-output"/></svg>4 · build<span class="ct">2</span></dt>
+      <dd class="refchips"><span class="ref"><code>frontend-build-patterns.md</code></span><span class="ref"><code>tailwind-v4-theme.md</code></span></dd>
+    </div>
+    <div class="refrow">
+      <dt class="reflabel"><svg class="lu" aria-hidden="true"><use href="#lu-eye"/></svg>5 · art review<span class="ct">1</span></dt>
+      <dd class="refchips"><span class="ref"><code>art-review.md</code></span></dd>
+    </div>
+    <div class="refrow">
+      <dt class="reflabel"><svg class="lu" aria-hidden="true"><use href="#lu-search-check"/></svg>6 · critique<span class="ct">2</span></dt>
+      <dd class="refchips"><span class="ref"><code>design-critique.md</code></span><span class="ref"><code>anti-default-catalog.md</code></span></dd>
+    </div>
+    <div class="refrow">
+      <dt class="reflabel"><svg class="lu" aria-hidden="true"><use href="#lu-scroll-text"/></svg>cross-cutting<span class="ct">2</span></dt>
+      <dd class="refchips"><span class="ref"><code>design-thinking.md</code></span><span class="ref"><code>SOURCES.md</code><i class="d">— traces every technique to its source</i></span></dd>
+    </div>
+  </dl>
   <p style="margin-top:16px">Browse the full set: <a href="https://github.com/gabros20/webdesign/tree/main/skills/webdesign/references">skills/webdesign/references/</a>.</p>
 </section>
 
