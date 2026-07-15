@@ -1,37 +1,56 @@
-# orchestrate
+# webdesign
 
-> One entry point, nine subagent-orchestration strategies, for any AI coding agent that reads a SKILL.md. Installs as an agent skill.
+> End-to-end web design, art-direction, and frontend-build system for AI agents. Installs as an agent skill.
 
-orchestrate turns "run this plan with subagents" into a controlled process instead of an improvised
-one. Point it at a plan file or a task description and it picks (or you force) a strategy — staged
-sequential cycles, parallel worktree fan-out, hierarchical sub-orchestrator fleets, agent teams,
-deterministic workflows, goal/Ralph loops, advisor/executor cost splits, adversarial planning, or
-external CLIs (Codex/Grok/Cursor/Antigravity/opencode/Hermes) as workers — then coordinates,
-dispatches, and gates the subagent work through it. `/orchestrate` auto-triages when no strategy is
-forced: it measures task shape (plan present, task count, file-overlap independence, context size,
-verifiable stop condition) and states why it picked what it picked. Claude Code is the reference
-host; the skill is plain Agent Skills format (agentskills.io) with a host-adapter layer
-(references/shared/hosts.md), so it runs on Codex, Cursor, Antigravity, opencode, Grok Build, and
-Hermes too — detecting its host at kickoff and degrading honestly where a primitive is missing.
+webdesign turns "design this page" into a controlled process instead of an improvised one. It takes
+a page from creative direction → structure → per-section craft → build → art review → scored
+critique, distilled from a production website-rebuild pipeline. The SKILL.md is a router — load
+only the reference(s) the current job needs (never all 22 at once) — covering direction-setting,
+per-section craft (layout, type, color, depth, imagery, motion, experimental WebGL), per-vertical
+strategy, trust/proof/conversion, the Next.js build, and the art-review + scored-critique gates.
+Claude Code is the reference host; it's plain Agent Skills format (agentskills.io), so it installs
+on Codex, Cursor, Antigravity, opencode, Grok Build, and Hermes too.
 
 ## Install
 
-- npm/skills.sh: `npx skills add gabros20/orchestrate@orchestrate -g`
-- Clone + installer (per-host targets: claude | codex | cursor | antigravity | opencode | grok | hermes | agents | all): `git clone https://github.com/gabros20/orchestrate && cd orchestrate && ./install.sh claude`
-- Manual copy: `cp -R skills/orchestrate ~/.claude/skills/orchestrate`
+- npm/skills.sh: `npx skills add gabros20/webdesign`
+- Clone + installer (per-host targets: claude | codex | cursor | antigravity | opencode | grok | hermes | agents | all): `git clone https://github.com/gabros20/webdesign && cd webdesign && ./install.sh claude`
+- Manual copy: `cp -R skills/webdesign ~/.claude/skills/webdesign`
 
 ## Docs
 
-- [README.md](https://raw.githubusercontent.com/gabros20/orchestrate/main/README.md): overview, install, composition presets, saved aliases, repo map.
-- [skills/orchestrate/SKILL.md](https://raw.githubusercontent.com/gabros20/orchestrate/main/skills/orchestrate/SKILL.md): the router — command grammar, strategy catalog, universal rules.
-- [docs/installation.md](https://raw.githubusercontent.com/gabros20/orchestrate/main/docs/installation.md): step-by-step install for Claude Code, Codex, and manual setups.
-- [docs/usage.md](https://raw.githubusercontent.com/gabros20/orchestrate/main/docs/usage.md): invoking `/orchestrate`, dimensions, resuming runs.
-- [docs/strategies.md](https://raw.githubusercontent.com/gabros20/orchestrate/main/docs/strategies.md): all nine strategies in depth — when to use each, their mechanics.
-- [docs/recipes.md](https://raw.githubusercontent.com/gabros20/orchestrate/main/docs/recipes.md): composed dimension recipes and saved aliases.
-- [docs/research/foundations.md](https://raw.githubusercontent.com/gabros20/orchestrate/main/docs/research/foundations.md): the evidence and sources behind the design choices.
-- [docs/research/token-optimization.md](https://raw.githubusercontent.com/gabros20/orchestrate/main/docs/research/token-optimization.md): research record on token/context/cost optimization for multi-agent orchestration.
+- [README.md](https://raw.githubusercontent.com/gabros20/webdesign/main/README.md): overview, install, the six-stage arc, repo map.
+- [skills/webdesign/SKILL.md](https://raw.githubusercontent.com/gabros20/webdesign/main/skills/webdesign/SKILL.md): the router — workflow arc, pick-by-job table, the non-negotiable laws.
+- [docs/installation.md](https://raw.githubusercontent.com/gabros20/webdesign/main/docs/installation.md): step-by-step install for Claude Code and other hosts.
+- [docs/usage.md](https://raw.githubusercontent.com/gabros20/webdesign/main/docs/usage.md): how the six stages fit together and when to enter at each one.
+- [docs/stages.md](https://raw.githubusercontent.com/gabros20/webdesign/main/docs/stages.md): direction, structure, craft, build, art review, and critique in depth.
+- [docs/recipes.md](https://raw.githubusercontent.com/gabros20/webdesign/main/docs/recipes.md): copy-paste starting points for common design/build jobs.
+
+## Reference inventory (`skills/webdesign/references/`)
+
+- `frontend-design-principles.md` — decide a visual direction / take a point of view / avoid generic.
+- `design-direction.md` — record the direction as a DESIGN.md (format, tokens, lint).
+- `section-archetypes.md` — plan a site's pages, nav, footer, section catalog + archetypes.
+- `section-design-workflow.md` — the per-section craft router; points to the device references below.
+- `layout-and-composition.md` — lay out a section / break the grid.
+- `typography.md` — make type the hero.
+- `color-and-rhythm.md` — set palette + section rhythm (light↔dark cadence, one accent).
+- `depth-and-texture.md` — make it feel 3D / premium / not flat.
+- `decoration.md` — add decoration (patterns, dividers, cutouts) without noise.
+- `imagery.md` — present images as more than rectangles.
+- `motion-and-interaction.md` — add motion / scroll interaction.
+- `experimental-and-creative.md` — go Awwwards-tier (WebGL, shaders, particles, custom cursor).
+- `niche-and-vertical-design.md` — design for a specific business/vertical + set the premium↔info dial.
+- `trust-proof-and-structure.md` — build credibility / E-E-A-T / SEO structure / case studies.
+- `persuasion-and-conversion.md` — drive & convert the user ethically (Cialdini, CCD, copy↔design).
+- `design-thinking.md` — decide what to do & judge it (composition process, AI-slop tells).
+- `frontend-build-patterns.md` — build the Next.js frontend from a design.
+- `tailwind-v4-theme.md` — map DESIGN.md tokens → a Tailwind v4 theme.
+- `art-review.md` — review a finished build against its direction (punch-list).
+- `design-critique.md` — run a scored review / go-no-go QA gate.
+- `anti-default-catalog.md` — check a draft against the current named AI tells.
+- `SOURCES.md` — trace a technique to its source.
 
 ## Optional
 
-- [docs/designs/v1.0.0-initial-architecture.md](https://raw.githubusercontent.com/gabros20/orchestrate/main/docs/designs/v1.0.0-initial-architecture.md): implementation design shipped in v1.0.0 — why the skill is shaped the way it is.
-- [Visual guide](https://orchestrate-skill.vercel.app): every strategy, dimension, and alias on one page.
+- [Visual guide](https://webdesign-skill.vercel.app): the six-stage arc, the laws, and the full reference map on one page.

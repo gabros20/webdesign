@@ -1,7 +1,8 @@
 name: check-sync
-# Release gate, enforced not trusted: every PR (and main) must keep the communication
-# blocks byte-identical, the honest numbers measured, and the replicated invariants
-# present in every home. The check itself lives in scripts/check-sync.
+# Release gate, enforced not trusted: every PR (and main) must keep the SKILL.md version in
+# sync across frontmatter/body/CHANGELOG, every reference file linked with no orphans, every
+# cross-link and anchor resolved, and the internal-tooling leakage guard clean. The check
+# itself lives in scripts/check-sync.
 on:
   pull_request:
   push:

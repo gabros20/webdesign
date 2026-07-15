@@ -1,53 +1,53 @@
 # Docs index
 
-Four documents cover using `orchestrate`; two more (linked at the bottom) cover why it's built the
+Four documents cover using `webdesign`; two more (linked at the bottom) cover why it's built the
 way it is. Each doc has one job — read in this order the first time, then jump straight to whichever
 one answers your question.
 
 | Doc | Type | Answers |
 |---|---|---|
-| [installation.md](installation.md) | How-to | How do I get `/orchestrate` running in Claude Code (or Codex)? |
-| [usage.md](usage.md) | Reference | What does every flag, dimension, and workspace file actually do? |
-| [strategies.md](strategies.md) | Reference / explanation | What does each of the 9 strategies do, and when do I reach for it? |
-| [recipes.md](recipes.md) | How-to | What's the exact command for `<scenario>`? |
+| [installation.md](installation.md) | How-to | How do I get `/webdesign` running in Claude Code (or another host)? |
+| [usage.md](usage.md) | Reference | How does the skill trigger, what's the six-stage arc, and what does each stage produce? |
+| [stages.md](stages.md) | Reference / explanation | What does each of the 6 stages do, which references does it load, and what's its gate? |
+| [recipes.md](recipes.md) | How-to | What's the exact prompt for `<scenario>`? |
 
 ## Reading order
 
-1. **[installation.md](installation.md)** — install it, confirm `/orchestrate` responds.
-2. **[usage.md](usage.md)** — the invocation grammar, the 8 dimensions, and how selection
-   (`strategy=` > `alias=` > triage) works. Read this once, fully; everything else builds on it.
-3. **[strategies.md](strategies.md)** — one strategy at a time, as you need it. Skip straight to
-   the strategy triage already picked for you, or browse to pick one yourself.
-4. **[recipes.md](recipes.md)** — copy-paste starting points: the 5 built-in aliases and a set of
-   scenario commands. Keep this one open while you work.
+1. **[installation.md](installation.md)** — install it, confirm `/webdesign` responds.
+2. **[usage.md](usage.md)** — how it triggers, the six-stage arc, the pick-by-job table, and the
+   non-negotiable laws. Read this once, fully; everything else builds on it.
+3. **[stages.md](stages.md)** — one stage at a time, as you need it. Skip straight to the stage
+   your task enters, or browse to see the whole arc.
+4. **[recipes.md](recipes.md)** — copy-paste scenario prompts. Keep this one open while you work.
 
 If you only read one page, read **usage.md** — it's the full control surface; the others are
 elaboration and shortcuts on top of it.
 
 ## Background (not needed to use the skill)
 
-Two folders separate *what we learned* from *what we shipped*:
+Two folders separate *what was gathered* from *what shipped*:
 
-- **[research/](research/)** — research records: the evidence and sources gathered before any
-  implementation. Version-agnostic; each doc's header states its status (which release implemented
-  it, or "research only — not yet implemented").
-  - [research/foundations.md](research/foundations.md) — the original research that fed v1.0.0
-    (X posts, official Claude Code docs, prior orchestration skills, CLI docs).
-  - [research/token-optimization.md](research/token-optimization.md) — token/context/cost
-    optimization for multi-agent orchestration (implemented in v1.1.0).
+- **[research/](research/)** — the research record: where the skill's content came from and what
+  was deliberately left out. Version-agnostic; the header states its status.
+  - [research/provenance.md](research/provenance.md) — the source→target mapping that fed v1.0.0
+    (which reference file came from which part of the source corpus, and what was stripped).
 - **[designs/](designs/)** — implementation designs that shipped, one per release that changed
   behavior. **The filename carries the release version** (`v<version>-<topic>.md`) and the header
   states the version + date; [CHANGELOG.md](../CHANGELOG.md) is the cross-reference.
-  - [designs/v1.0.0-initial-architecture.md](designs/v1.0.0-initial-architecture.md) — why
-    strategies are presets over dimensions, the file layout, the build decisions.
-  - [designs/v1.1.0-token-optimization.md](designs/v1.1.0-token-optimization.md) — the token
-    economy layer: role-scoped communication blocks, priming anatomy, brief-check.
-  - [designs/v1.2.0-orientation.md](designs/v1.2.0-orientation.md) — worker orientation licensed
-    and tooled (the graded ritual + `scripts/toolbox`).
+  - [designs/v1.0.0-initial-synthesis.md](designs/v1.0.0-initial-synthesis.md) — why the skill is a
+    router over references rather than one long document, the six-stage arc, the `SKILL.md` line
+    budget, and how v1.0.0 was actually built (a staged multi-agent synthesis run over the source
+    corpus, closed out with a four-way adversarial review).
 
 Lifecycle: research lands in `research/` → when acted on, an implementation design lands in
-`designs/` as `v<next-version>-<topic>.md` → the release bumps `version:` in SKILL.md, adds a
-CHANGELOG entry, passes `scripts/check-sync` (CI-enforced on every PR), and tags `v<version>`.
+`designs/` as `v<next-version>-<topic>.md` → the release bumps `version:` in
+`skills/webdesign/SKILL.md` frontmatter, adds a CHANGELOG entry, passes `scripts/check-sync`
+(CI-enforced on every PR), and tags `v<version>`.
 
 Read these if you want to know *why* something works the way it does, or if you're extending the
 skill yourself.
+
+---
+
+*Repo structure and release discipline templated from the orchestrate skill repo
+(github.com/gabros20/orchestrate).*

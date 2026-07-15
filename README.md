@@ -1,172 +1,126 @@
-# /orchestrate
+# /webdesign
 
-**One entry point, nine subagent-orchestration strategies, for any agent that reads SKILL.md.**
+**An end-to-end web design, art-direction, and frontend-build system — for any agent that reads SKILL.md.**
 
-`/orchestrate` turns "run this plan with subagents" into a controlled process instead of an
-improvised one. You point it at a plan or a task; it picks (or you force) a strategy —
-sequential staged cycles, parallel worktree fan-out, hierarchical sub-orchestrator fleets, agent
-teams, deterministic workflows, goal/Ralph loops, advisor/executor cost splits, adversarial
-planning, or external CLIs (Codex/Grok/Cursor/Antigravity/opencode/Hermes) as workers — then
-coordinates, dispatches, and gates subagent work through it. Claude Code is the reference host;
-the skill is plain [Agent Skills](https://agentskills.io) format with a built-in host-adapter
-layer, so it runs on any agent that reads `SKILL.md` (see [Supported agents](#supported-agents)).
+`/webdesign` takes a page from creative direction through a shipped, reviewed build. Point it at a
+site, a section, or an existing build; it walks six stages — **direction → structure → per-section
+craft → build → art review → critique** — and you can enter at any stage: "critique this page"
+jumps straight to 5–6, "build this from a design spec" starts at 4, a greenfield brand site runs
+1→6. 22 reference files, every one copy-pasteable rather than abstract.
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-**Visual guide:** [orchestrate.vercel.app](https://orchestrate-skill.vercel.app) — every strategy, dimension,
-and alias on one page.
+**Visual guide:** [webdesign-skill.vercel.app](https://webdesign-skill.vercel.app) — every stage,
+device, and law on one page.
+
+## What it is
+
+Six stages, distilled from a production website-rebuild pipeline:
+
+1. **Direction** — decide the taste/point-of-view (palette, type, register, the one signature) and
+   record it as a `DESIGN.md` design-system contract.
+2. **Structure** — sitemap, navigation, footer, per-page section blueprints, a deduplicated section
+   catalog keyed to reusable archetypes.
+3. **Per-section craft** — one bold move + the 1–2 devices that deliver it, per section (layout,
+   typography, color, depth, decoration, imagery, motion, experimental/WebGL, plus the strategy
+   layer for vertical, trust/proof, and persuasion).
+4. **Build** — scaffold Next.js, one client component per section key in a fail-loud registry, and
+   apply the `DESIGN.md` tokens as a collision-free Tailwind v4 theme.
+5. **Art review** — the eye that set the direction judges the build section by section, at full
+   resolution, and hands back a punch-list (or signs off).
+6. **Critique / QA gate** — a scored, severity-routed pass (Nielsen heuristics, cognitive load,
+   personas, mechanical checks) against the named AI tells — turns "looks good" into a go/no-go.
+
+Everything routes through [`skills/webdesign/SKILL.md`](skills/webdesign/SKILL.md) — load only the
+reference(s) your current job needs, never all 22 at once.
+
+**The non-negotiable laws**, in brief (full text with the load-bearing quotes lives in SKILL.md):
+
+- **Depth over flatness** — resolve every section into ≥2 planes, or at least one unifying texture.
+- **Contrast creates interest** — exactly one biggest/boldest element per section.
+- **One bold move + restraint** — spend boldness in one place; two bold moves compete and cancel.
+- **Design for the business, not "a website"** — set the premium↔information dial deliberately.
+- **Register first** — is the design the product, or does it serve it? Name it per surface.
+- **Refuse the named defaults** — check every draft against the anti-default catalog.
+- **Real content, real assets** — specific copy and real asset libraries over lorem/stock/emoji.
 
 ## Install
 
 **skills.sh ecosystem:**
 ```bash
-npx skills add gabros20/orchestrate@orchestrate -g
+npx skills add gabros20/webdesign
 ```
 
 **Clone + installer** (per-host targets):
 ```bash
-git clone https://github.com/gabros20/orchestrate && cd orchestrate
+git clone https://github.com/gabros20/webdesign && cd webdesign
 ./install.sh claude   # or: codex | cursor | antigravity | opencode | grok | hermes | agents | all
 ```
-`agents` installs to `~/.agents/skills` — the cross-agent standard path that Codex, Cursor,
-opencode, Copilot, and Amp all read; `all` = claude + agents.
+
+| Host | Installs to |
+|---|---|
+| **Claude Code** (`claude`) | `~/.claude/skills/webdesign` |
+| **Codex CLI / cross-agent standard** (`codex`, `agents`) | `~/.agents/skills/webdesign` |
+| **Cursor** (`cursor`) | `~/.cursor/skills/webdesign` |
+| **Antigravity** (`antigravity`) | `~/.gemini/config/skills/webdesign` (IDE) + `~/.gemini/antigravity-cli/skills/webdesign` (agy CLI) |
+| **opencode** (`opencode`) | `~/.config/opencode/skills/webdesign` |
+| **Grok Build** (`grok`) | `~/.grok/skills/webdesign` |
+| **Hermes** (`hermes`) | `~/.hermes/skills/webdesign` |
+| `all` | both `claude` and `agents` targets |
 
 **Manual:**
 ```bash
-cp -R skills/orchestrate ~/.claude/skills/orchestrate   # or your host's skills dir
+cp -R skills/webdesign ~/.claude/skills/webdesign   # or your host's skills dir
 ```
-
-## Supported agents
-
-| Host | Skills | Native subagents | Model pin per dispatch | Quirks that matter |
-|---|---|---|---|---|
-| **Claude Code** | ✅ reference | ✅ deep, background, teams | ✅ | none — every primitive native |
-| **Codex CLI** | ✅ `~/.agents/skills` | ✅ 6 threads, depth 1 | ✅ | no background shells (`nohup`+poll); `codex exec` needs `</dev/null` |
-| **Cursor CLI** | ✅ (2.4+, reads `.claude/skills` too) | ✅ parallel + background, depth 1 | ✅ | headless ask-user is broken — human gates need ACP or interactive |
-| **Antigravity** (`agy`/IDE) | ✅ | ✅ async, depth 10, messaging | ❌ inherits parent | `agy -p` flags under-documented; IDE/CLI use different global skill dirs |
-| **opencode** | ✅ (reads `.claude`/`.agents` too) | ⚠️ synchronous only | ✅ | parallel fan-out via `opencode serve`+SDK or external processes |
-| **Grok Build** | ✅ (reads `.claude/` wholesale) | ✅ 8 parallel, auto-worktree | ❌ | skills load at session start; approvals all-or-nothing |
-| **Hermes** | ✅ explicit `/orchestrate` only | ⚠️ 3 concurrent, flat | ❌ (upstream bug) | no auto-trigger; user-level skills dir only |
-
-The skill detects its host at kickoff and binds six abstract primitives (dispatch / parallel /
-message / ask-user / worktree / loop) natively where possible, degrading honestly where not —
-`team` needs Claude Code or Antigravity, `workflow` needs Claude Code, everything else runs
-everywhere (worst case as headless-CLI fan-out). Full matrix + bindings:
-[`references/shared/hosts.md`](skills/orchestrate/references/shared/hosts.md).
 
 ## Quick start
 
-Bare invocation — triage reads the plan, picks a strategy, tells you why, and proceeds:
-```
-/orchestrate plan.md
-```
-
-Force a strategy and tune it with dimensions:
-```
-/orchestrate plan.md strategy=parallel workers=4
-/orchestrate "audit every service for the new auth flow" strategy=workflow
-/orchestrate plan.md strategy=loop trigger=goal:"tests green" budget=cycles:15
-```
-
-## Composition presets & recipes
-
-A strategy is a **preset over dimensions** (`review`, `engine`, `models`, `isolation`, `trigger`,
-`budget`) — everything below is one invocation, no code. Start with a saved alias, or compose
-dimensions directly.
-
-### Saved aliases (`config.yaml`)
-
-| Alias | Expands to | Use when |
-|---|---|---|
-| `red-team` | `strategy=adversarial review=panel:3 models={planner:strongest,worker:sonnet}` | High-stakes plan — harden it by debate, then execute under a 3-reviewer panel |
-| `codex-grind` | `strategy=staged engine=codex review=dual models={reviewer:sonnet}` | Cheap bulk implementation, Claude reviews Codex's output |
-| `swarm` | `strategy=parallel workers=4 review=spec isolation=worktree` | Independent tasks, no shared files, minimal ceremony |
-| `afk` | `strategy=loop trigger=goal budget={cycles:20,open_prs:1} review=dual` | Walk-away grind with hard rails and a stop condition |
-| `architect` | `strategy=advisor models={advisor:strongest,worker:sonnet}` | Big-model thinking, small-model doing — minimize expensive-model calls |
+Invoke with `/webdesign` (or your host's skill invocation):
 
 ```
-/orchestrate plan.md alias=red-team
+/webdesign author a DESIGN.md for a fintech landing page
+/webdesign design a hero that doesn't look AI-generated
+/webdesign art-review this build
+/webdesign run a scored design critique on this page
 ```
 
-### Common recipes
+## Pick by job
 
-| Goal | Command |
+Read only what the job requires — the full 22-row table lives in
+[SKILL.md](skills/webdesign/SKILL.md#pick-by-job):
+
+| I need to… | Read |
 |---|---|
-| Panel of experts on a question | `/orchestrate "should we adopt X?" strategy=team workers=3` |
-| Review a plan adversarially | `/orchestrate plan.md strategy=adversarial` |
-| Multi-lens review of anything | add `review=panel:3` to any strategy |
-| Research + evaluated claims | `/orchestrate "research X" strategy=hierarchical review=consensus:3` |
-| Mass migration/audit | `/orchestrate plan.md strategy=workflow` (pilot a slice first) |
-| Cheap bulk with cross-model review | `/orchestrate plan.md strategy=staged engine=codex` |
-| Walk-away grind | `/orchestrate plan.md strategy=loop trigger=goal:"tests green" budget=cycles:15` |
-
-Explicit `strategy=`/dimension flags always override an alias; `alias=` always overrides auto-triage.
-
-## The 9 strategies
-
-| Strategy | Use when |
-|---|---|
-| **staged** *(default)* | A plan with mostly-independent tasks — fresh implementer per task, dual review gate |
-| **parallel** | Independent tasks, no shared files — N workers at once in worktrees |
-| **hierarchical** | Work too broad for one context — sub-orchestrators think per-domain, workers execute |
-| **team** | Workers must talk to each other — debate, competing hypotheses, cross-layer coordination |
-| **workflow** | 10–1000 agents, deterministic fan-out/verify — a script holds the plan, not the model |
-| **loop** | Recurring or grind-until-done work with a verifiable stop condition |
-| **advisor** | Cost split — cheap executor runs, expensive model consulted rarely (or plans up front) |
-| **adversarial** | High-stakes plan worth hardening by debate before cheap execution |
-| **xcli** | Route work to external CLIs (Codex/Grok/Cursor/agy/opencode/Hermes) as workers, peers, or second opinions |
-
-Strategies compose: `strategy=staged engine=codex` (Codex implements, Claude reviews) ·
-`strategy=loop topology=parallel` (each cycle fans out) · `strategy=parallel review=panel:3`.
-
-## Dimensions
-
-Every strategy is a preset over these; you can override any of them on top of a strategy or alias.
-
-| Dimension | Values | Default |
-|---|---|---|
-| `topology` | solo · staged · parallel · hierarchical · team · workflow · loop | from strategy |
-| `planning` | none · plan-first · interview · adversarial | plan-first |
-| `review` | off · spec · quality · dual · panel:N · consensus:N | dual |
-| `engine` | claude · codex · grok · cursor · agy · opencode · hermes · mixed | claude |
-| `models` | tier map (advisor/orchestrator/reasoner/worker/reviewer/peer) | see model-routing |
-| `isolation` | none · worktree · branch | worktree when >1 writer |
-| `trigger` | once · goal · interval · schedule | once |
-| `budget` | max cycles / agents / tokens / open-PR cap | per strategy |
-
-## How it stays safe
-
-- **Branch-first** — never starts on `main`/`master` without consent.
-- **Typed review gates** — enforced, not trusted; fixed order (spec, then quality).
-- **Ledger before memory** — progress is appended to `.orchestrate/progress.md`; on resume, the
-  ledger and `git log` win over recollection.
-- **Loop rails** — hard cycle caps, a kill switch, and an open-PR bandwidth cap.
-- **No duplicate agents on overload** — an API overload resumes/nudges the same agent, never
-  forks a second one doing the same work.
-- **Controller never implements** — the invoking agent coordinates and gates; every unit of work
-  runs in a fresh subagent context.
+| Decide a visual direction / take a point of view / avoid generic | [frontend-design-principles.md](skills/webdesign/references/frontend-design-principles.md) |
+| Record the direction as a DESIGN.md (format, tokens, CLI, lint) | [design-direction.md](skills/webdesign/references/design-direction.md) |
+| Check a draft against the current named AI tells | [anti-default-catalog.md](skills/webdesign/references/anti-default-catalog.md) |
+| Plan a site's pages, nav, footer, section catalog + archetypes | [section-archetypes.md](skills/webdesign/references/section-archetypes.md) |
+| Design/compose/build one distinctive section | [section-design-workflow.md](skills/webdesign/references/section-design-workflow.md) |
+| Build the Next.js frontend from a design | [frontend-build-patterns.md](skills/webdesign/references/frontend-build-patterns.md) |
+| Review a finished build against its direction (punch-list) | [art-review.md](skills/webdesign/references/art-review.md) |
+| Run a scored review / go-no-go QA gate | [design-critique.md](skills/webdesign/references/design-critique.md) |
 
 ## Repo map
 
 ```
-skills/orchestrate/   the skill: SKILL.md (router), config.yaml (aliases), references/, scripts/
-docs/                 research/ (research records), designs/ (versioned implementation designs)
-site/                 the visual guide, deploys to orchestrate-skill.vercel.app
-install.sh            installer (claude | codex | cursor | antigravity | opencode | grok | hermes | agents | all)
+skills/webdesign/   the skill: SKILL.md (router) + references/ (22 reference files)
+docs/               the manual — installation, usage, stages, recipes
+site/               the visual guide, deploys to webdesign-skill.vercel.app
+scripts/check-sync  the release gate (repo-side tooling, NOT shipped with the skill)
+install.sh          installer (claude | codex | cursor | antigravity | opencode | grok | hermes | agents | all)
 ```
 
-More docs: [docs/research/](docs/research/) · [docs/designs/](docs/designs/) ·
-[docs/installation.md](docs/installation.md) · [docs/usage.md](docs/usage.md) ·
-[docs/strategies.md](docs/strategies.md) · [docs/recipes.md](docs/recipes.md)
+## Versioning & releases
 
-## Requirements
-
-- Any [Agent Skills](https://agentskills.io) host — [Claude Code](https://claude.com/product/claude-code)
-  is the reference; Codex, Cursor, Antigravity, opencode, Grok Build, and Hermes are supported
-  via the host-adapter layer (see [Supported agents](#supported-agents)).
-- `git`, for worktree/branch isolation.
-- Optional: any of the other CLIs installed and on `PATH` for `engine=xcli` workers.
+[SemVer](https://semver.org/). The current version lives in `skills/webdesign/SKILL.md`
+frontmatter (`version:`) and is tagged in git as `v<version>`. Every release updates the
+frontmatter, the **Version X.Y.Z** line in the SKILL.md body, and `CHANGELOG.md` together, and
+must pass `scripts/check-sync` — CI-enforced on every PR via
+[`.github/workflows/check-sync.yml`](.github/workflows/check-sync.yml).
 
 ## License
 
 [MIT](LICENSE) · Tamás Gábor ([@gabros20](https://github.com/gabros20))
+
+Repo structure and release discipline templated from
+[github.com/gabros20/orchestrate](https://github.com/gabros20/orchestrate).
