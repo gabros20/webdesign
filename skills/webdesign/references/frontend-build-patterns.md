@@ -1,11 +1,33 @@
 # Building the frontend: scaffold, sections, theming, data, and QA
 
 How to turn a design (a theme spec, a section catalog, per-page content) into a runnable,
-good-looking Next.js app. Covers scaffold conventions, the one-component-per-section discipline,
+good-looking frontend. Covers scaffold conventions, the one-component-per-section discipline,
 applying a design spec as the Tailwind theme, interactivity/motion, asset handling, a visual
 end-to-end self-check, and the underlying HTML/CSS/JS craft guidelines.
 
-## Stack
+## Stack posture — the patterns are the contract, the stack is the example
+
+Everything below is demonstrated in one reference stack (next section) so the guidance stays
+copy-pasteable. None of it *requires* that stack: when the project already uses something else,
+keep the pattern and translate the mechanism — a project's existing stack always wins over this
+file's example.
+
+| Pattern (the contract) | Reference implementation | What to look for in your stack |
+|---|---|---|
+| One component per section key | React `'use client'` component | Astro/Svelte/Vue component, HTMX partial, template include |
+| Fail-loud section registry | `Record<string, ComponentType>` map | any key→component map that throws/warns on a miss in dev |
+| Design tokens → styling layer | Tailwind v4 `@theme` block | plain CSS custom properties, StyleX vars, CSS Modules + vars |
+| Static routes from content | `generateStaticParams` | Astro `getStaticPaths`, SvelteKit `entries`, Nuxt prerender routes |
+| Optimized image/font primitives | `next/image` / `next/font` | `astro:assets`, SvelteKit `enhanced:img`, `@nuxt/image`, or hand-rolled `srcset` + `font-display` |
+| Redirects + not-found fallback | framework routing config | any router's redirect map + catch-all route |
+
+Framework examples worth knowing (heat shifts — treat as examples, not an endorsement list):
+Astro, SvelteKit, Nuxt, TanStack Start, React Router 7, and HTMX + Alpine.js at the lean end.
+Styling: Tailwind, vanilla CSS custom properties, StyleX, CSS Modules. The design doctrine in the
+rest of this skill is stack-free either way — only this file and the Tailwind theme reference are
+implementation-specific.
+
+## Reference stack (the worked example)
 
 - **pnpm** for installs, **biome** (or your linter/formatter of choice) for lint/format,
   **TypeScript strict**.
@@ -376,7 +398,11 @@ border-radius/borders instead of fetching an SVG/image for them.
 **Vendor prefixes.** Kill obsolete ones; let the toolchain add what's actually needed. If
 hand-writing any, put the standard property *after* the prefixed one.
 
-## TypeScript / JavaScript craft
+## Appendix: TypeScript / JavaScript craft
+
+Code hygiene for the worked example — engineering craft, not design doctrine. Nothing in this
+appendix changes a pixel; it keeps the code you ship maintainable. Skim or skip if your stack
+differs.
 
 **Readability and correctness over performance.** JavaScript is essentially never the bottleneck
 in a normal app — optimize image compression, network, and DOM/React reflows instead. Express

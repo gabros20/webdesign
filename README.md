@@ -24,8 +24,8 @@ Six stages, distilled from a production website-rebuild pipeline:
 3. **Per-section craft** — one bold move + the 1–2 devices that deliver it, per section (layout,
    typography, color, depth, decoration, imagery, motion, experimental/WebGL, plus the strategy
    layer for vertical, trust/proof, and persuasion).
-4. **Build** — scaffold Next.js, one client component per section key in a fail-loud registry, and
-   apply the `DESIGN.md` tokens as a collision-free Tailwind v4 theme.
+4. **Build** — one component per section key in a fail-loud registry, `DESIGN.md` tokens applied as
+   a collision-free theme (reference stack Next.js + Tailwind v4; the patterns port to any stack).
 5. **Art review** — the eye that set the direction judges the build section by section, at full
    resolution, and hands back a punch-list (or signs off).
 6. **Critique / QA gate** — a scored, severity-routed pass (Nielsen heuristics, cognitive load,
@@ -96,7 +96,7 @@ Read only what the job requires — the full 22-row table lives in
 | Check a draft against the current named AI tells | [anti-default-catalog.md](skills/webdesign/references/anti-default-catalog.md) |
 | Plan a site's pages, nav, footer, section catalog + archetypes | [section-archetypes.md](skills/webdesign/references/section-archetypes.md) |
 | Design/compose/build one distinctive section | [section-design-workflow.md](skills/webdesign/references/section-design-workflow.md) |
-| Build the Next.js frontend from a design | [frontend-build-patterns.md](skills/webdesign/references/frontend-build-patterns.md) |
+| Build the frontend from a design (any stack; Next.js worked example) | [frontend-build-patterns.md](skills/webdesign/references/frontend-build-patterns.md) |
 | Review a finished build against its direction (punch-list) | [art-review.md](skills/webdesign/references/art-review.md) |
 | Run a scored review / go-no-go QA gate | [design-critique.md](skills/webdesign/references/design-critique.md) |
 

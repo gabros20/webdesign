@@ -8,6 +8,11 @@ namespace, and hand-author the namespaces `design.md` can't express. Verify agai
 Tailwind version — these defaults are from v4 docs (`tailwindlabs/tailwindcss.com`, theme
 reference).
 
+**No Tailwind?** A `DESIGN.md` token export is just CSS custom properties — consume them directly
+in vanilla CSS (or as StyleX / CSS Modules variables). Only the namespace mapping below is
+Tailwind-specific; the collision and full-coverage discipline is worth mirroring in any token
+system.
+
 ## 1. Namespace → utilities it powers (the complete set)
 
 | Namespace | Powers | design.md export emits it? |

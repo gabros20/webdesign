@@ -1,6 +1,6 @@
 ---
 name: webdesign
-version: 1.0.1
+version: 1.1.0
 description: >-
   End-to-end web design, art-direction, and frontend-build system for websites, landing pages,
   marketing sites, and UI. This skill should be used whenever an agent designs, art-directs,
@@ -10,7 +10,8 @@ description: >-
   pick a palette / typography / layout, add depth / motion / decoration to a section, structure a
   site's sections and IA, map design tokens into a Tailwind v4 theme, or "build the frontend from a
   design". Covers direction-setting, per-section craft (layout, type, color, depth, imagery, motion,
-  experimental WebGL), per-vertical strategy, trust/proof/conversion, the Next.js build, and the
+  experimental WebGL), per-vertical strategy, trust/proof/conversion, the frontend build (Next.js +
+  Tailwind v4 as the worked example — the patterns port to any stack), and the
   art-review + scored-critique gates.
 license: MIT
 metadata:
@@ -20,12 +21,21 @@ metadata:
 
 # Web Design Pro
 
-**Version 1.0.1** — if asked which version of webdesign is installed, answer from this line.
+**Version 1.1.0** — if asked which version of webdesign is installed, answer from this line.
 (History: `CHANGELOG.md` in the source repo, github.com/gabros20/webdesign.)
 
 An end-to-end web design + art-direction + build system, distilled from a production website-rebuild
 pipeline. It takes a page from **creative direction → structure → per-section craft → build →
 art review → scored critique**, and every reference is copy-pasteable rather than abstract.
+
+**Scope.** This skill owns everything between "what should this look like" and "the pixels on
+screen match it" — direction, structure, per-section craft, the code that produces appearance
+(CSS, tokens, motion, section composition), and the review gates. Engineering that doesn't change
+what the user sees (build tooling, state, data fetching, testing, component-API design) is out of
+scope — see the hand-off list at the bottom. **Stack posture:** build guidance is written against
+one worked example (Next.js + Tailwind v4) because concrete beats abstract; the *patterns* are the
+contract and port to any framework or CSS tooling, and a project's existing stack always wins over
+the example.
 
 This SKILL.md is a **router**. Load only the reference(s) your current job needs — the whole point is
 that you never read all 22 at once. Everything lives in [`references/`](references/).
@@ -48,8 +58,9 @@ from a design spec" starts at 4; a greenfield brand site runs 1→6.
    `layout-and-composition` · `typography` · `color-and-rhythm` · `depth-and-texture` · `decoration` ·
    `imagery` · `motion-and-interaction` · `experimental-and-creative`, plus the strategy layer
    (`niche-and-vertical-design` · `trust-proof-and-structure` · `persuasion-and-conversion`).
-4. **Build** — scaffold Next.js, one client component per section key in a fail-loud registry, and
-   apply the DESIGN.md tokens as a collision-free Tailwind v4 theme.
+4. **Build** — one component per section key in a fail-loud registry, DESIGN.md tokens applied as a
+   collision-free theme. Written against the reference stack (Next.js + Tailwind v4); the patterns
+   port to any framework.
    → [frontend-build-patterns.md](references/frontend-build-patterns.md) ·
    [tailwind-v4-theme.md](references/tailwind-v4-theme.md)
 5. **Art review** — the eye that set the direction judges the build section by section, at full
@@ -87,7 +98,7 @@ Read only what the job requires.
 | **Build credibility / E-E-A-T / SEO structure / case studies** | [trust-proof-and-structure.md](references/trust-proof-and-structure.md) |
 | **Drive & convert the user ethically (Cialdini, CCD, copy↔design)** | [persuasion-and-conversion.md](references/persuasion-and-conversion.md) |
 | **Decide what to do & judge it (composition process, AI-slop tells)** | [design-thinking.md](references/design-thinking.md) |
-| **Build the Next.js frontend from a design** | [frontend-build-patterns.md](references/frontend-build-patterns.md) |
+| **Build the frontend from a design (any stack; Next.js worked example)** | [frontend-build-patterns.md](references/frontend-build-patterns.md) |
 | **Review a finished build against its direction (punch-list)** | [art-review.md](references/art-review.md) |
 | **Run a scored review / go-no-go QA gate** | [design-critique.md](references/design-critique.md) |
 | **Trace a technique to its source** | [SOURCES.md](references/SOURCES.md) |

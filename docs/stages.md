@@ -69,14 +69,14 @@ more than two bold moves fighting each other).
 
 ## 4. Build
 
-**For**: turning the design spec and section catalog into a runnable, good-looking Next.js app.
+**For**: turning the design spec and section catalog into a runnable, good-looking frontend. The stage is written against a reference stack — Next.js + Tailwind v4 — and its patterns (section registry, token theming, visual self-check) port to any framework; a project's existing stack always wins.
 
 **Loads**: `frontend-build-patterns.md` (scaffold conventions, the one-client-component-per-section
 discipline, the component-registry pattern, content/data wiring, craft gotchas, the HTML/CSS/JS
 guidelines) · `tailwind-v4-theme.md` (mapping `DESIGN.md` tokens onto Tailwind v4's `@theme`
 namespaces without the `max-w-*` collision).
 
-**Produces**: a scaffolded Next.js app; one `'use client'` component per catalog section key; a
+**Produces**: a scaffolded app (Next.js in the worked example); one component per catalog section key; a
 fail-loud `sectionMap` registry; a Tailwind v4 theme built from the generated `design.md` export
 plus a hand-authored companion `@theme` block for the namespaces the export can't emit (container
 widths, shadows, ease/animate curves, aspect ratios).

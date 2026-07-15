@@ -35,7 +35,7 @@ section. Full per-stage detail (references loaded, output, gate): [stages.md](st
 | 1 | **Direction** | Decide the taste/point-of-view (palette, type, register, the one signature) and record it as a `DESIGN.md` contract. |
 | 2 | **Structure** | Turn the plan into a sitemap, navigation, footer, per-page section blueprints, and a deduplicated section catalog keyed to reusable archetypes. |
 | 3 | **Per-section craft** | For each section, pick one bold move and the 1–2 devices that deliver it, then ship the CSS. |
-| 4 | **Build** | Scaffold Next.js, one client component per section key in a fail-loud registry, apply the `DESIGN.md` tokens as a Tailwind v4 theme. |
+| 4 | **Build** | One component per section key in a fail-loud registry, `DESIGN.md` tokens applied as a collision-free theme (reference stack Next.js + Tailwind v4; stack-portable patterns). |
 | 5 | **Art review** | The eye that set the direction judges the build section by section, at full resolution, and hands back an A0–A3 punch-list (or signs off). |
 | 6 | **Critique / QA gate** | A scored, severity-routed pass (Nielsen 0–40, cognitive load, personas, mechanical checks) that turns "looks good" into a go/no-go. |
 
@@ -64,7 +64,7 @@ Read only what the job requires — this table is the fast path from "what am I 
 | **Build credibility / E-E-A-T / SEO structure / case studies** | `trust-proof-and-structure.md` |
 | **Drive & convert the user ethically (Cialdini, CCD, copy↔design)** | `persuasion-and-conversion.md` |
 | **Decide what to do & judge it (composition process, AI-slop tells)** | `design-thinking.md` |
-| **Build the Next.js frontend from a design** | `frontend-build-patterns.md` |
+| **Build the frontend from a design (any stack; Next.js worked example)** | `frontend-build-patterns.md` |
 | **Review a finished build against its direction (punch-list)** | `art-review.md` |
 | **Run a scored review / go-no-go QA gate** | `design-critique.md` |
 | **Trace a technique to its source** | `SOURCES.md` |
@@ -114,7 +114,7 @@ wherever your project convention puts it:
 | Direction | A `DESIGN.md` file (YAML front-matter tokens + prose), typically at the repo root or `docs/DESIGN.md`. |
 | Structure | A sitemap, nav/footer plan, and a deduplicated section catalog (usually a plan document or the content model itself). |
 | Per-section craft | Shipped CSS/markup for the section, checked against the anti-boring checklist. |
-| Build | A running Next.js app: one client component per section key, a fail-loud `sectionMap` registry, a Tailwind v4 `@theme` sourced from `DESIGN.md`. |
+| Build | A running app (Next.js in the worked example): one component per section key, a fail-loud `sectionMap` registry, a theme sourced from `DESIGN.md`. |
 | Art review | A structured review record per round — verdict (`approve`/`revise`), per-section findings, an A0–A3 blocking/notes split. |
 | Critique / QA gate | A scored critique (Nielsen 0–40 + cognitive load + personas) with P0–P3 severity-routed findings and an explicit go/no-go. |
 

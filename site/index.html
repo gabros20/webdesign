@@ -6,14 +6,14 @@
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f6f7fa">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#12151d">
 <title>webdesign — end-to-end web design, art-direction &amp; frontend-build for AI agents</title>
-<meta name="description" content="webdesign is a Claude Code skill: six stages — direction, structure, per-section craft, Next.js build, art review, and a scored critique gate — backed by 22 copy-paste references, so agents stop shipping the same generic template.">
+<meta name="description" content="webdesign is a Claude Code skill: six stages — direction, structure, per-section craft, frontend build, art review, and a scored critique gate — backed by 22 copy-paste references, so agents stop shipping the same generic template.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://webdesign-skill.vercel.app/">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="webdesign — end-to-end web design, art-direction & frontend-build for AI agents">
-<meta property="og:description" content="A six-stage design + art-direction + build system for AI agents — direction, structure, per-section craft, Next.js build, art review, and a scored go/no-go critique gate.">
+<meta property="og:description" content="A six-stage design + art-direction + build system for AI agents — direction, structure, per-section craft, frontend build, art review, and a scored go/no-go critique gate.">
 <meta property="og:url" content="https://webdesign-skill.vercel.app/">
 <meta property="og:image" content="https://webdesign-skill.vercel.app/og.png">
 <meta property="og:image:width" content="1200">
@@ -22,7 +22,7 @@
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="webdesign — end-to-end web design, art-direction & frontend-build for AI agents">
-<meta name="twitter:description" content="A six-stage design + art-direction + build system for AI agents — direction, structure, per-section craft, Next.js build, art review, and a scored go/no-go critique gate.">
+<meta name="twitter:description" content="A six-stage design + art-direction + build system for AI agents — direction, structure, per-section craft, frontend build, art review, and a scored go/no-go critique gate.">
 <meta name="twitter:image" content="https://webdesign-skill.vercel.app/og.png">
 
 <script type="application/ld+json">
@@ -32,7 +32,7 @@
   "name": "webdesign",
   "applicationCategory": "DesignApplication",
   "operatingSystem": "Claude Code / agent CLIs",
-  "description": "End-to-end web design, art-direction, and frontend-build system for AI agents: direction, structure, per-section craft, a Next.js build, art review, and a scored critique gate, backed by 22 copy-paste references.",
+  "description": "End-to-end web design, art-direction, and frontend-build system for AI agents: direction, structure, per-section craft, a frontend build, art review, and a scored critique gate, backed by 22 copy-paste references.",
   "url": "https://webdesign-skill.vercel.app/",
   "offers": {
     "@type": "Offer",
@@ -237,7 +237,7 @@
   <p class="lede">You ask an agent to design a page and get the same cream-serif-terracotta
   template everyone else got. <b>webdesign</b> replaces that guess with a system: set a real
   point of view, structure the page, craft each section with one bold move, build it in
-  Next.js, then have the same eye review it before it ships. End-to-end web design,
+  whatever stack the project uses, then have the same eye review it before it ships. End-to-end web design,
   art-direction, and frontend-build for AI agents.</p>
   <div class="term" style="margin-top:22px"><span class="c"># that's the whole start</span>
 <span class="p">/webdesign</span> design a landing page for a boutique coffee roaster — premium, one bold move, nothing off-the-shelf</div>
@@ -264,7 +264,7 @@
     <div><b><svg class="lu" aria-hidden="true"><use href="#lu-sliders-horizontal"/></svg>direction</b><span>Decide the taste/point-of-view — palette, type, register, the one signature — and record it as a formal design-system contract. → <code>frontend-design-principles.md</code> · <code>design-direction.md</code></span></div>
     <div><b><svg class="lu" aria-hidden="true"><use href="#lu-files"/></svg>structure</b><span>Turn the plan into a sitemap, navigation, footer, per-page section blueprints, and a deduplicated section catalog keyed to reusable archetypes. → <code>section-archetypes.md</code></span></div>
     <div><b><svg class="lu" aria-hidden="true"><use href="#lu-layers"/></svg>per-section craft</b><span>For each section, pick <b>one bold move</b> and the 1–2 devices that deliver it, then ship the CSS. Start from the craft router, load only the specific device references it points to (layout, typography, color, depth, decoration, imagery, motion, experimental, plus the strategy layer). → <code>section-design-workflow.md</code></span></div>
-    <div><b><svg class="lu" aria-hidden="true"><use href="#lu-file-output"/></svg>build</b><span>Scaffold Next.js, one client component per section key in a fail-loud registry, and apply the DESIGN.md tokens as a collision-free Tailwind v4 theme. → <code>frontend-build-patterns.md</code> · <code>tailwind-v4-theme.md</code></span></div>
+    <div><b><svg class="lu" aria-hidden="true"><use href="#lu-file-output"/></svg>build</b><span>One component per section key in a fail-loud registry, DESIGN.md tokens applied as a collision-free theme — shown in Next.js + Tailwind v4, portable to any stack. → <code>frontend-build-patterns.md</code> · <code>tailwind-v4-theme.md</code></span></div>
     <div><b><svg class="lu" aria-hidden="true"><use href="#lu-eye"/></svg>art review</b><span>The eye that set the direction judges the build section by section, at full resolution, and hands back an A0–A3 punch-list (or signs off). → <code>art-review.md</code></span></div>
     <div><b><svg class="lu" aria-hidden="true"><use href="#lu-search-check"/></svg>critique / QA gate</b><span>A scored, severity-routed pass — Nielsen heuristics, cognitive load, personas, mechanical checks — that turns "looks good" into a go/no-go, checked against the named AI tells. → <code>design-critique.md</code> · <code>anti-default-catalog.md</code></span></div>
   </div>
@@ -299,7 +299,7 @@
     <tr><td>Add motion / scroll interaction</td><td><code><a href="https://github.com/gabros20/webdesign/blob/main/skills/webdesign/references/motion-and-interaction.md">motion-and-interaction.md</a></code></td></tr>
     <tr><td>Design for a specific business/vertical + set the premium↔info dial</td><td><code><a href="https://github.com/gabros20/webdesign/blob/main/skills/webdesign/references/niche-and-vertical-design.md">niche-and-vertical-design.md</a></code></td></tr>
     <tr><td>Drive &amp; convert the user ethically (Cialdini, CCD, copy↔design)</td><td><code><a href="https://github.com/gabros20/webdesign/blob/main/skills/webdesign/references/persuasion-and-conversion.md">persuasion-and-conversion.md</a></code></td></tr>
-    <tr><td>Build the Next.js frontend from a design</td><td><code><a href="https://github.com/gabros20/webdesign/blob/main/skills/webdesign/references/frontend-build-patterns.md">frontend-build-patterns.md</a></code></td></tr>
+    <tr><td>Build the frontend from a design (any stack)</td><td><code><a href="https://github.com/gabros20/webdesign/blob/main/skills/webdesign/references/frontend-build-patterns.md">frontend-build-patterns.md</a></code></td></tr>
     <tr><td>Review a finished build against its direction (punch-list)</td><td><code><a href="https://github.com/gabros20/webdesign/blob/main/skills/webdesign/references/art-review.md">art-review.md</a></code></td></tr>
     <tr><td>Run a scored review / go-no-go QA gate</td><td><code><a href="https://github.com/gabros20/webdesign/blob/main/skills/webdesign/references/design-critique.md">design-critique.md</a></code></td></tr>
   </table></div>

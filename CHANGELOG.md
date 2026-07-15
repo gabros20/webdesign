@@ -12,9 +12,19 @@ tagged in git as `v<version>`. Every release PR updates **both** plus this file,
 `scripts/check-sync` (version sync across frontmatter/body/changelog, no orphan references, every
 cross-link and anchor resolved, internal-tooling leakage guard — CI-enforced on every PR).
 
-## [Unreleased]
+## [1.1.0] — 2026-07-15
 
 ### Changed
+- **Stack posture made explicit.** SKILL.md now states the skill's scope rule (it owns everything
+  between "what should this look like" and "the pixels on screen match it"; engineering that
+  doesn't change appearance is out of scope) and frames Next.js + Tailwind v4 as the worked
+  example rather than a requirement. `frontend-build-patterns.md` gains a "Stack posture" section
+  with a pattern→your-stack mapping table (Astro, SvelteKit, Nuxt, TanStack Start, React Router 7,
+  HTMX + Alpine.js; Tailwind, vanilla CSS custom properties, StyleX, CSS Modules), its stack
+  section is retitled "Reference stack", and the TypeScript/JavaScript craft section is demoted to
+  an explicitly-labeled appendix (engineering hygiene, not design doctrine — content unchanged).
+  `tailwind-v4-theme.md` notes how `DESIGN.md` tokens are consumed without Tailwind. README, docs,
+  and site aligned to the same framing.
 - Site: reference map rebuilt from a stretched card grid to a stage→chips definition list
   (kills the craft-card whitespace voids and the orphan card).
 - Site: hero terminal now shows the `/webdesign` invocation (matching the sibling site's `/orchestrate plan.md` pattern) instead of install;
@@ -44,5 +54,6 @@ cross-link and anchor resolved, internal-tooling leakage guard — CI-enforced o
 - Docs set (`docs/`) — installation, usage, stages, recipes.
 - Visual guide (`site/`), deploys to webdesign-skill.vercel.app.
 
+[1.1.0]: https://github.com/gabros20/webdesign/releases/tag/v1.1.0
 [1.0.1]: https://github.com/gabros20/webdesign/releases/tag/v1.0.1
 [1.0.0]: https://github.com/gabros20/webdesign/releases/tag/v1.0.0
