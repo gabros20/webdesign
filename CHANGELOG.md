@@ -12,6 +12,15 @@ tagged in git as `v<version>`. Every release PR updates **both** plus this file,
 `scripts/check-sync` (version sync across frontmatter/body/changelog, no orphan references, every
 cross-link and anchor resolved, internal-tooling leakage guard — CI-enforced on every PR).
 
+## [1.0.1] — 2026-07-15
+
+### Changed
+- Raspberry accent identity — the site, favicon, OG image, and the "Life of a Page" hero
+  animation move from the inherited blue to a raspberry accent (OKLCH hue ~350, with L and
+  chroma held at the previous accent's levels so contrast ratios and neutrals are unchanged).
+  Establishes a per-skill color scheme so each published skill is recognizable by its hue;
+  orchestrate retains blue. Skill behavior and references are unchanged.
+
 ## [1.0.0] — 2026-07-15
 
 ### Added
@@ -27,4 +36,5 @@ cross-link and anchor resolved, internal-tooling leakage guard — CI-enforced o
 - Docs set (`docs/`) — installation, usage, stages, recipes.
 - Visual guide (`site/`), deploys to webdesign-skill.vercel.app.
 
+[1.0.1]: https://github.com/gabros20/webdesign/releases/tag/v1.0.1
 [1.0.0]: https://github.com/gabros20/webdesign/releases/tag/v1.0.0

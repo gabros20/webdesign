@@ -243,7 +243,7 @@ const DirectionBoard: React.FC<{ t: Theme; frame: number }> = ({ t, frame }) => 
   const opacity = io(frame, [10, 30], [0, 1]) * io(frame, [150, 172], [1, 0]);
   if (opacity <= 0.01) return null;
   const sw = SWATCHES(t);
-  const tokens = ["--accent  #3b63d8", "--ink     #1c2333", "type      mono / system"];
+  const tokens = ["--accent  #b6307d", "--ink     #1c2333", "type      mono / system"];
   return (
     <div
       style={{
@@ -519,7 +519,7 @@ const PageMockup: React.FC<{ t: Theme; frame: number }> = ({ t, frame }) => {
 // ---------- BEAT 4 — BUILD (code overlay) ----------
 const CODE: { txt: string; c: (t: Theme) => string }[] = [
   { txt: "@theme {", c: (t) => t.muted },
-  { txt: "  --color-accent: #3b63d8;", c: (t) => t.accent },
+  { txt: "  --color-accent: #b6307d;", c: (t) => t.accent },
   { txt: "  --font-display: ui-monospace;", c: (t) => t.ink },
   { txt: "}", c: (t) => t.muted },
   { txt: "export function Hero() {", c: (t) => t.dim },
