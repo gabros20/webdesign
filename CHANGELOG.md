@@ -12,9 +12,17 @@ tagged in git as `v<version>`. Every release PR updates **both** plus this file,
 `scripts/check-sync` (version sync across frontmatter/body/changelog, no orphan references, every
 cross-link and anchor resolved, internal-tooling leakage guard — CI-enforced on every PR).
 
-## [Unreleased]
+## [1.2.0] — 2026-07-16
 
 ### Added
+- **Capture-tooling contract for the visual stages.** `art-review.md` now states what the review
+  physically needs — serve the build, programmatic per-section screenshots at two viewports with
+  reduced motion emulated, and a model that can read images — and recommends the token-efficient
+  toolchain: script batch captures (a throwaway Playwright script; zero tokens while it runs) and
+  the `agent-browser` CLI for interactive inspection (terse CDP-based output, no
+  Playwright/Puppeteer dependency), with host-native browser tools as fallback and an
+  honest-degrade rule (a review that viewed no build must say so). Pointer added from the build
+  stage's visual self-check; SKILL.md stage 5 and the installation prerequisites aligned.
 - Docs timeline backfill: `research/stack-agnosticism.md` (the coupling audit + scope question
   that fed 1.1.0), `designs/v1.1.0-stack-posture.md`, and `designs/v1.0.1-color-identity.md`
   (the per-skill hue-identity system + reskin checklist); docs index updated.
@@ -65,6 +73,7 @@ cross-link and anchor resolved, internal-tooling leakage guard — CI-enforced o
 - Docs set (`docs/`) — installation, usage, stages, recipes.
 - Visual guide (`site/`), deploys to webdesign-skill.vercel.app.
 
+[1.2.0]: https://github.com/gabros20/webdesign/releases/tag/v1.2.0
 [1.1.0]: https://github.com/gabros20/webdesign/releases/tag/v1.1.0
 [1.0.1]: https://github.com/gabros20/webdesign/releases/tag/v1.0.1
 [1.0.0]: https://github.com/gabros20/webdesign/releases/tag/v1.0.0

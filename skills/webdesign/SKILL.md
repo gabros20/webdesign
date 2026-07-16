@@ -1,6 +1,6 @@
 ---
 name: webdesign
-version: 1.1.0
+version: 1.2.0
 description: >-
   End-to-end web design, art-direction, and frontend-build system for websites, landing pages,
   marketing sites, and UI. This skill should be used whenever an agent designs, art-directs,
@@ -21,7 +21,7 @@ metadata:
 
 # Web Design Pro
 
-**Version 1.1.0** — if asked which version of webdesign is installed, answer from this line.
+**Version 1.2.0** — if asked which version of webdesign is installed, answer from this line.
 (History: `CHANGELOG.md` in the source repo, github.com/gabros20/webdesign.)
 
 An end-to-end web design + art-direction + build system, distilled from a production website-rebuild
@@ -64,7 +64,8 @@ from a design spec" starts at 4; a greenfield brand site runs 1→6.
    → [frontend-build-patterns.md](references/frontend-build-patterns.md) ·
    [tailwind-v4-theme.md](references/tailwind-v4-theme.md)
 5. **Art review** — the eye that set the direction judges the build section by section, at full
-   resolution, and hands back an A0–A3 punch-list (or signs off).
+   resolution, and hands back an A0–A3 punch-list (or signs off). Visual by nature: needs a local
+   serve + screenshot path and a model that reads images (capture-tooling contract in the reference).
    → [art-review.md](references/art-review.md)
 6. **Critique / QA gate** — a scored, severity-routed pass (Nielsen 0–40, cognitive load, personas,
    mechanical checks) that turns "looks good" into a go/no-go, checked against the named AI tells.

@@ -255,7 +255,9 @@ done:
    representative mobile device size — using a browser-automation tool. For pages with
    scroll-reveal or lazy-loaded content, a single full-page screenshot can capture blank —
    step-scroll with a short wait between steps, then scroll back to the top before the final
-   capture.
+   capture. Capture tooling — script the batch, `agent-browser` for interactive poking, and the
+   honest-degrade rule — is specified in
+   [art-review.md](art-review.md#capture-tooling-what-this-review-physically-needs).
 3. **Actually look at each screenshot** for real defects: text overflow/clipping (an oversized
    display heading is the classic case), element overlap, a fixed header obscuring the first
    heading, broken or placeholder images, an unreachable or overlapping mobile nav, cramped or

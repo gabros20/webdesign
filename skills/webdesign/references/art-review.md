@@ -26,6 +26,37 @@ design nitpick when the copy itself must be preserved.
 4. Your own design taste, informed by the anti-default catalog and the "spend your boldness in one
    place" discipline (see [frontend-design-principles.md](frontend-design-principles.md#restraint-and-self-critique)).
 
+## Capture tooling — what this review physically needs
+
+This review is visual: it cannot run from source code alone. The capability contract, independent
+of any specific tool:
+
+1. **Serve the build** (dev server or static output) on a local port.
+2. **Screenshot it programmatically** — per-section tight crops, two viewports (desktop ~1440×900
+   and an iPhone-class device), `prefers-reduced-motion` emulated, each element scrolled into view
+   before the shot (lazy images).
+3. **Read the images** — the reviewing model must be multimodal. No vision, no art review.
+
+Token economy: **spend tokens reading crops, not driving the browser.** A picture is worth a
+thousand tokens; a chatty automation layer burns them before you've seen anything.
+
+- **Batch capture (building the manifest): script it.** A short throwaway Playwright script — or a
+  shell loop issued as one command — that walks every route/section and writes all crops plus an
+  ordered manifest (document order, desktop before mobile) to a directory in a single run. Zero
+  tokens while it runs; you only pay to look at the results.
+- **Interactive inspection (hover states, nav, forms, "what does this actually do"):
+  `agent-browser`** — a fast CDP-based CLI built for agents (`npm i -g agent-browser &&
+  agent-browser install`, then `agent-browser skills get core` for usage that matches the
+  installed version). Terse output — a click returns "Done", not a page snapshot — makes it an
+  order of magnitude cheaper in context than MCP-based browser automation; it needs no
+  Playwright/Puppeteer install and runs on any agent host. `set viewport 1440 900` /
+  `set device "iPhone 14"` cover the two-viewport rule.
+- **Fallback: your host's native browser tools** (e.g. Claude Code's Chrome integration) when
+  nothing can be installed.
+- **No browser at all → degrade honestly.** Review markup/CSS/tokens against the direction and
+  label the result explicitly: *"code-level pass — not an art review; no build was viewed."*
+  Never present an unviewed review as a viewed one.
+
 ## Procedure
 
 ### 1. Capture the build section by section, at full resolution

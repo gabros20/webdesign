@@ -10,9 +10,16 @@ differ.
 
 - An Agent Skills host: [Claude Code](https://claude.com/product/claude-code) (reference), or
   Codex CLI / Cursor CLI / Antigravity / opencode / Grok Build / Hermes.
-- Nothing else is required. The skill has no external CLI dependency, no worktree requirement, and
-  no config file — it's a router plus 22 reference files an agent reads on demand. (Optional
-  tooling for the direction stage — the `design.md` CLI — is covered at the bottom.)
+- Nothing else is required for stages 1–4. The skill has no external CLI dependency, no worktree
+  requirement, and no config file — it's a router plus 22 reference files an agent reads on demand.
+  (Optional tooling for the direction stage — the `design.md` CLI — is covered at the bottom.)
+- **Stages 5–6 and the build stage's visual self-check need a headless-browser capture path** — the
+  agent must serve the build, screenshot it, and read the images (a multimodal model). Recommended:
+  script batch captures (a short Playwright script, zero tokens while it runs) and
+  [`agent-browser`](https://github.com/vercel-labs/agent-browser) (`npm i -g agent-browser &&
+  agent-browser install`) for token-efficient interactive inspection.
+  With no browser available, the review stages degrade to an explicitly-labeled code-level pass —
+  see the capture-tooling section in the skill's `art-review.md`.
 
 ## Install (pick one)
 

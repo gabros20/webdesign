@@ -36,6 +36,9 @@ Two folders separate *what was gathered* from *what shipped*:
   - [research/stack-agnosticism.md](research/stack-agnosticism.md) — the stack-coupling audit and
     the "how much frontend code belongs in a design skill" question that fed v1.1.0 (the inclusion
     test, the options weighed, the examples-not-endorsements rule).
+  - [research/visual-capture-tooling.md](research/visual-capture-tooling.md) — what the review
+    stages physically need (serve + screenshot + vision) and the token-efficiency comparison
+    behind v1.2.0's toolchain recommendation (script the batch, `agent-browser` for interactive).
 - **[designs/](designs/)** — implementation designs that shipped, one per release worth recording
   (skill behavior or its presentation). **The filename carries the release version**
   (`v<version>-<topic>.md`) and the header states the version + date;
@@ -49,6 +52,9 @@ Two folders separate *what was gathered* from *what shipped*:
   - [designs/v1.1.0-stack-posture.md](designs/v1.1.0-stack-posture.md) — the scope rule and the
     stack-agnostic build posture (Next.js + Tailwind reframed as the worked example; the
     pattern→your-stack mapping table; the demoted JS appendix).
+  - [designs/v1.2.0-capture-tooling.md](designs/v1.2.0-capture-tooling.md) — the capture-tooling
+    contract for the visual stages (contract over tool mandate; the four-rung ladder; the
+    honest-degrade rule).
 
 Lifecycle: research lands in `research/` → when acted on, an implementation design lands in
 `designs/` as `v<next-version>-<topic>.md` → the release bumps `version:` in
