@@ -10,6 +10,13 @@ corrections, wording tuning with unchanged behavior.
 The release procedure synchronizes `.codex-plugin/plugin.json`, this changelog, git tag
 `v<version>`, and the matching GitHub Release. Runtime `SKILL.md` contains no version metadata.
 
+## [1.3.2] — 2026-07-19
+
+### Changed
+- Narrowed the activation description's positive claim from "visual web interfaces" to
+  "marketing-site interfaces" and excluded app dashboards and product UI — those surfaces belong to
+  the `design` skill. Verified against isolated activation evals in the design-skill family run.
+
 ## [1.3.1] — 2026-07-19
 
 ### Changed
