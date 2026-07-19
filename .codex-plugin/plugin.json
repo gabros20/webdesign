@@ -1,6 +1,6 @@
 {
   "name": "webdesign-skill",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "Distinctive website design, appearance-producing frontend build guidance, and evidence-based visual QA.",
   "author": {
     "name": "Tamás Gábor",
@@ -9,7 +9,13 @@
   "homepage": "https://webdesign-skill.vercel.app",
   "repository": "https://github.com/gabros20/webdesign-skill",
   "license": "MIT",
-  "keywords": ["agent-skill", "webdesign", "art-direction", "frontend", "visual-qa"],
+  "keywords": [
+    "agent-skill",
+    "webdesign",
+    "art-direction",
+    "frontend",
+    "visual-qa"
+  ],
   "skills": "./skills/",
   "interface": {
     "displayName": "Webdesign",
@@ -17,7 +23,10 @@
     "longDescription": "Take websites from art direction and structure through appearance-producing frontend work, rendered art review, and scored visual critique.",
     "developerName": "Tamás Gábor",
     "category": "Developer Tools",
-    "capabilities": ["Interactive", "Write"],
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
     "websiteURL": "https://webdesign-skill.vercel.app",
     "defaultPrompt": [
       "Use $webdesign to design a distinctive landing page.",

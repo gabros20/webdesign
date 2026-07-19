@@ -2,12 +2,13 @@
 name: webdesign
 description: >-
   Design and build distinctive websites, landing pages, and visual web interfaces from direction
-  through visual QA. Use for art direction, DESIGN.md systems, page IA, section
-  composition, typography, color, imagery, motion, conversion-aware layout, CSS/theme implementation,
-  or visual critique. Include frontend code only when it produces the approved appearance. Do not
-  use for application state or data architecture, backend work, component API engineering, full
-  accessibility audits, general SEO strategy, or growth planning unless
-  the request also requires website design.
+  through visual QA of the builds it produces. Use for art direction, DESIGN.md systems, page IA,
+  section composition, typography, color, imagery, motion, conversion-aware layout, CSS/theme
+  implementation, or visual critique of those builds. Include frontend code only when it produces
+  the approved appearance. Do not use for application state or data architecture, backend work,
+  component API engineering, full accessibility audits, general SEO strategy, growth planning, or
+  standalone design critique of work it did not build, unless the request also requires website
+  design.
 ---
 
 # Web Design Pro

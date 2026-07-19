@@ -10,6 +10,15 @@ corrections, wording tuning with unchanged behavior.
 The release procedure synchronizes `.codex-plugin/plugin.json`, this changelog, git tag
 `v<version>`, and the matching GitHub Release. Runtime `SKILL.md` contains no version metadata.
 
+## [1.3.1] — 2026-07-19
+
+### Changed
+- Scoped the activation description's QA and critique claims to the builds this skill produces
+  ("visual QA of the builds it produces", "visual critique of those builds") and added an explicit
+  exclusion for standalone design critique of work it did not build. Resolves the activation
+  collision with the `design` skill on critiquing already-rendered pages (found in design-skill's
+  live activation evals).
+
 ## [1.3.0] — 2026-07-17
 
 ### Added
