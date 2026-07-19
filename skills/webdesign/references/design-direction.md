@@ -1,5 +1,26 @@
 # Design direction — authoring a project's DESIGN.md
 
+Purpose: Define a website's visual direction as a concrete, reusable DESIGN.md contract.
+
+Read when:
+- A project needs visual principles, tokens, typography, layout, motion, or asset direction before build.
+
+Skip when:
+- The approved direction already exists and the task only implements it.
+
+Inputs:
+- Brand evidence, audience, business goal, content, assets, and technical constraints.
+
+Produces:
+- A lintable DESIGN.md with decisions, tokens, signature move, and handoff notes.
+
+## Contents
+
+- The tool: `design.md`
+- Authoring procedure
+- Acceptance criterion
+- What to hand off
+
 How to decide a project's visual direction and record it as a `DESIGN.md` — the design-system
 **contract** between "what the design should look like" and "the code that builds it." Author it
 once (the look), then export its tokens straight into a Tailwind theme (see

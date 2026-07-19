@@ -1,136 +1,91 @@
 # Installation
 
-How to get `/webdesign` running, confirm it's registered, update it, and remove it. `webdesign` is
-a plain [Agent Skills](https://agentskills.io)-format skill — a `SKILL.md` router plus a
-`references/` folder, no scripts, no config file — so any agent that reads that format can use it.
-This guide targets Claude Code (the reference host) and notes the other hosts' paths where they
-differ.
+Install the `webdesign` runtime pack from `gabros20/webdesign-skill`.
 
 ## Prerequisites
 
-- An Agent Skills host: [Claude Code](https://claude.com/product/claude-code) (reference), or
-  Codex CLI / Cursor CLI / Antigravity / opencode / Grok Build / Hermes.
-- Nothing else is required for stages 1–4. The skill has no external CLI dependency, no worktree
-  requirement, and no config file — it's a router plus 22 reference files an agent reads on demand.
-  (Optional tooling for the direction stage — the `design.md` CLI — is covered at the bottom.)
-- **Stages 5–6 and the build stage's visual self-check need a headless-browser capture path** — the
-  agent must serve the build, screenshot it, and read the images (a multimodal model). Recommended:
-  script batch captures (a short Playwright script, zero tokens while it runs) and
-  [`agent-browser`](https://github.com/vercel-labs/agent-browser) (`npm i -g agent-browser &&
-  agent-browser install`) for token-efficient interactive inspection.
-  With no browser available, the review stages degrade to an explicitly-labeled code-level pass —
-  see the capture-tooling section in the skill's `art-review.md`.
+- An Agent Skills-compatible client.
+- Stages 1-4 require no external CLI.
+- Art review, critique, and build self-checks require a runnable page, screenshot capability, and a
+  model that can inspect images. A scripted browser capture is preferred for batches;
+  [`agent-browser`](https://github.com/vercel-labs/agent-browser) is suitable for interactive
+  inspection. Without rendered evidence, the skill must label its review as code-level only.
 
-## Install (pick one)
-
-### 1. skills.sh ecosystem
-
-If you already use the [skills.sh](https://skills.sh) registry:
+## Install with skills.sh
 
 ```bash
-npx skills add gabros20/webdesign
+npx skills add gabros20/webdesign-skill
 ```
 
-Maps to the right directory across 70+ agents automatically. Add `-g` to install it globally
-(available in every project); drop it to install into the current project only.
-
-### 2. Clone + installer script
+## Clone and install
 
 ```bash
-git clone https://github.com/gabros20/webdesign && cd webdesign
-./install.sh claude   # or: codex | cursor | antigravity | opencode | grok | hermes | agents | all
+git clone https://github.com/gabros20/webdesign-skill.git
+cd webdesign-skill
+./install.sh codex
 ```
 
-`install.sh` takes one argument (default `claude` if omitted):
-
-| Argument | Installs to |
+| Argument | Destination |
 |---|---|
+| `codex` | `${CODEX_HOME:-$HOME/.codex}/skills/webdesign/` |
+| `agents` | `~/.agents/skills/webdesign/` |
 | `claude` | `~/.claude/skills/webdesign/` |
-| `codex` / `agents` | `~/.agents/skills/webdesign/` (the cross-agent standard path — Cursor, opencode, Copilot, Amp read it too) |
 | `cursor` | `~/.cursor/skills/webdesign/` |
-| `antigravity` | `~/.gemini/config/skills/` (IDE) **and** `~/.gemini/antigravity-cli/skills/` (agy) |
+| `antigravity` | Gemini IDE and Antigravity CLI skill paths |
 | `opencode` | `~/.config/opencode/skills/webdesign/` |
-| `grok` | `~/.grok/skills/webdesign/` (Grok Build also reads `~/.claude/skills` directly) |
-| `hermes` | `~/.hermes/skills/webdesign/` (Hermes has no confirmed project-level dir; invoke explicitly with `/webdesign`) |
-| `all` | `claude` + `agents` — covers most hosts without littering every vendor dir |
+| `grok` | `~/.grok/skills/webdesign/` |
+| `hermes` | `~/.hermes/skills/webdesign/` |
+| `all` | Claude, Codex, and the cross-agent path |
 
-It's a straight copy — `rm -rf <dest>` then `cp -R skills/webdesign <dest>` — so re-running it is
-also how you update (see [Updating](#updating) below). No other arguments are accepted; anything
-else prints usage and exits 1.
+The installer stages a full runtime copy before replacement and restores an existing installation
+if replacement fails.
 
-### 3. Manual copy
+## Verify
 
-```bash
-cp -R skills/webdesign ~/.claude/skills/webdesign
-```
+Start a new client session and use its supported form:
 
-Equivalent to the installer's `claude` target — use this if you want the skill under a different
-name, or if you're vendoring it into a monorepo's own skills directory instead of `~/.claude/skills`.
+- Codex: `$webdesign`
+- Slash-command clients: `/webdesign`
+- Other clients: `@webdesign`, a skill tool, or natural-language activation
 
-## Verifying it registered
-
-Claude Code loads skills from `~/.claude/skills/*/SKILL.md` at session start, keyed by the
-frontmatter `name` field. After installing:
-
-1. Start a **new** Claude Code session (already-running sessions won't pick up a fresh install).
-2. Type `/webdesign` — it should be offered as a slash command. You can also just describe the
-   task in the trigger phrases from the frontmatter description ("design a website / section /
-   hero", "art direction", "author a DESIGN.md", "make it look premium / not generic / not
-   AI-generated", "design review / critique") and the host should invoke the skill on its own —
-   unlike a dispatch-style skill, there's no separate argument grammar to learn.
-3. Ask "which version of webdesign is installed" — it should answer from the version line in its
-   own `SKILL.md` body (`**Version 1.0.0**`), not from a separate command.
-4. If none of that works, confirm the file exists and has valid frontmatter:
-   ```bash
-   head -5 ~/.claude/skills/webdesign/SKILL.md
-   ```
-   You should see `name: webdesign` and a `description:` line. A missing or malformed frontmatter
-   block is the usual reason a skill silently fails to register.
-
-For the other hosts, registration is governed by each CLI's own skill-discovery mechanism —
-confirm the directory and `SKILL.md` exist. Notable per-host quirks: opencode invokes skills via
-its `skill` tool (no slash form); Gemini-lineage hosts may show a one-time consent prompt on first
-activation; Grok Build loads skills at session start only (start a new session after installing);
-Hermes requires explicit `/webdesign` (no description auto-trigger).
-
-## Updating
-
-There's no separate update command — re-run whichever install path you used:
+For Codex, verify the runtime pack directly:
 
 ```bash
-# clone + installer
-cd webdesign && git pull && ./install.sh claude
-
-# skills.sh
-npx skills add gabros20/webdesign
-
-# manual
-cp -R skills/webdesign ~/.claude/skills/webdesign
+test -f "${CODEX_HOME:-$HOME/.codex}/skills/webdesign/SKILL.md"
 ```
 
-Each of these overwrites the installed copy in place (`install.sh` does `rm -rf` first), so there's
-nothing to reconcile — just make sure you're pulling the latest source before you re-copy it.
+Then run a small route-specific request, for example:
 
-## Uninstalling
+```text
+Use $webdesign to critique the visual hierarchy of this landing page.
+```
+
+## Update
 
 ```bash
-rm -rf ~/.claude/skills/webdesign      # Claude Code
-rm -rf ~/.agents/skills/webdesign      # Codex, if installed there
+cd webdesign-skill
+git pull --ff-only
+./install.sh codex
 ```
 
-The skill carries no per-project workspace or state directory to clean up separately — removing
-the skill directory is the whole uninstall.
+Review [CHANGELOG.md](../CHANGELOG.md) and GitHub Releases for version history. Version metadata
+intentionally stays outside runtime `SKILL.md`.
 
-## Optional: the `design.md` CLI
+## Uninstall
 
-Needed only for the direction stage — authoring, linting, and diffing a project's `DESIGN.md` (see
-[usage.md](usage.md) and the skill's `references/design-direction.md`).
+```bash
+rm -rf "${CODEX_HOME:-$HOME/.codex}/skills/webdesign"
+```
+
+## Optional DESIGN.md CLI
+
+The direction workflow can use Google's alpha `design.md` CLI for schema inspection, linting,
+diffing, and token export:
 
 ```bash
 npx @google/design.md@<pinned-version> spec
 ```
 
-`design.md` (npm `@google/design.md`, Apache-2.0) is alpha and its schema churns — pin a version
-rather than always pulling latest, and run `design.md spec` before authoring to verify the current
-API instead of trusting memory. Without it, direction can still be written and recorded as prose;
-you just lose the automated lint/diff/export gate.
+Pin a tested version and inspect its current specification before authoring. Without the CLI, the
+skill can still produce the same design contract as Markdown; only automated lint/diff/export is
+unavailable.

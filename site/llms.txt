@@ -13,18 +13,18 @@ on Codex, Cursor, Antigravity, opencode, Grok Build, and Hermes too.
 
 ## Install
 
-- npm/skills.sh: `npx skills add gabros20/webdesign`
-- Clone + installer (per-host targets: claude | codex | cursor | antigravity | opencode | grok | hermes | agents | all): `git clone https://github.com/gabros20/webdesign && cd webdesign && ./install.sh claude`
+- npm/skills.sh: `npx skills add gabros20/webdesign-skill`
+- Clone + installer (per-host targets: claude | codex | cursor | antigravity | opencode | grok | hermes | agents | all): `git clone https://github.com/gabros20/webdesign-skill && cd webdesign-skill && ./install.sh codex`
 - Manual copy: `cp -R skills/webdesign ~/.claude/skills/webdesign`
 
 ## Docs
 
-- [README.md](https://raw.githubusercontent.com/gabros20/webdesign/main/README.md): overview, install, the six-stage arc, repo map.
-- [skills/webdesign/SKILL.md](https://raw.githubusercontent.com/gabros20/webdesign/main/skills/webdesign/SKILL.md): the router — workflow arc, pick-by-job table, the non-negotiable laws.
-- [docs/installation.md](https://raw.githubusercontent.com/gabros20/webdesign/main/docs/installation.md): step-by-step install for Claude Code and other hosts.
-- [docs/usage.md](https://raw.githubusercontent.com/gabros20/webdesign/main/docs/usage.md): how the six stages fit together and when to enter at each one.
-- [docs/stages.md](https://raw.githubusercontent.com/gabros20/webdesign/main/docs/stages.md): direction, structure, craft, build, art review, and critique in depth.
-- [docs/recipes.md](https://raw.githubusercontent.com/gabros20/webdesign/main/docs/recipes.md): copy-paste starting points for common design/build jobs.
+- [README.md](https://raw.githubusercontent.com/gabros20/webdesign-skill/main/README.md): overview, install, the six-stage arc, repo map.
+- [skills/webdesign/SKILL.md](https://raw.githubusercontent.com/gabros20/webdesign-skill/main/skills/webdesign/SKILL.md): the runtime router, artifact contract, and completion rules.
+- [docs/installation.md](https://raw.githubusercontent.com/gabros20/webdesign-skill/main/docs/installation.md): step-by-step installation and verification.
+- [docs/usage.md](https://raw.githubusercontent.com/gabros20/webdesign-skill/main/docs/usage.md): how the six stages fit together and when to enter at each one.
+- [docs/stages.md](https://raw.githubusercontent.com/gabros20/webdesign-skill/main/docs/stages.md): direction, structure, craft, build, art review, and critique in depth.
+- [docs/recipes.md](https://raw.githubusercontent.com/gabros20/webdesign-skill/main/docs/recipes.md): copy-paste starting points for common design/build jobs.
 
 ## Reference inventory (`skills/webdesign/references/`)
 

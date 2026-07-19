@@ -1,5 +1,33 @@
 # Motion & Interaction
 
+Purpose: Add motion that guides attention or rewards interaction while preserving a complete reduced-motion state.
+
+Read when:
+- A section needs reveal, hover, scroll, parallax, or ambient interaction behavior.
+
+Skip when:
+- Motion is decorative only, the no-motion experience is incomplete, or performance constraints prohibit it.
+
+Inputs:
+- Interaction goal, element hierarchy, browser support, and reduced-motion requirements.
+
+Produces:
+- A motion hierarchy, implementation pattern, fallback, and validation checks.
+
+## Contents
+
+- A1. CSS scroll-driven reveals (`animation-timeline`) — the 2025/26 baseline
+- A2. Intersection Observer reveals (universal JS fallback)
+- A3. Pinned / sticky scroll sections (GSAP ScrollTrigger) — scrollytelling
+- A4. Scroll-scrubbed video / image sequence
+- A5. Horizontal scroll gallery
+- A6. Magnetic button
+- A7. 3D card tilt
+- A8. Hover micro-interactions
+- A9. Continuous ambient motion (marquee, gradient drift)
+- A10. Smooth scroll (Lenis) + Motion/Framer Motion
+- A11. Motion principles (the taste layer)
+
 Two halves: **Part A** — implementable motion/interaction patterns. **Part B** is in
 `design-thinking.md` (composition + critique). Golden rule for everything here: motion **guides
 attention and rewards**, never decorates; make the no-motion state the complete, usable state; always

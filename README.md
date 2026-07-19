@@ -1,126 +1,153 @@
-# /webdesign
+# Webdesign
 
-**An end-to-end web design, art-direction, and frontend-build system — for any agent that reads SKILL.md.**
-
-`/webdesign` takes a page from creative direction through a shipped, reviewed build. Point it at a
-site, a section, or an existing build; it walks six stages — **direction → structure → per-section
-craft → build → art review → critique** — and you can enter at any stage: "critique this page"
-jumps straight to 5–6, "build this from a design spec" starts at 4, a greenfield brand site runs
-1→6. 22 reference files, every one copy-pasteable rather than abstract.
+Design and build distinctive websites from visual direction through rendered review. `webdesign`
+combines art direction, page structure, per-section craft, appearance-producing frontend guidance,
+and evidence-based visual QA without expanding into general application engineering.
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-**Visual guide:** [webdesign-skill.vercel.app](https://webdesign-skill.vercel.app) — every stage,
-device, and law on one page.
+**Visual guide:** [webdesign-skill.vercel.app](https://webdesign-skill.vercel.app)
 
-## What it is
+## What it owns
 
-Six stages, distilled from a production website-rebuild pipeline:
+Use `webdesign` for websites, landing pages, marketing sites, and visual web-interface work that
+needs one or more of:
 
-1. **Direction** — decide the taste/point-of-view (palette, type, register, the one signature) and
-   record it as a `DESIGN.md` design-system contract.
-2. **Structure** — sitemap, navigation, footer, per-page section blueprints, a deduplicated section
-   catalog keyed to reusable archetypes.
-3. **Per-section craft** — one bold move + the 1–2 devices that deliver it, per section (layout,
-   typography, color, depth, decoration, imagery, motion, experimental/WebGL, plus the strategy
-   layer for vertical, trust/proof, and persuasion).
-4. **Build** — one component per section key in a fail-loud registry, `DESIGN.md` tokens applied as
-   a collision-free theme (reference stack Next.js + Tailwind v4; the patterns port to any stack).
-5. **Art review** — the eye that set the direction judges the build section by section, at full
-   resolution, and hands back a punch-list (or signs off).
-6. **Critique / QA gate** — a scored, severity-routed pass (Nielsen heuristics, cognitive load,
-   personas, mechanical checks) against the named AI tells — turns "looks good" into a go/no-go.
+- Art direction and a concrete `DESIGN.md` contract.
+- Sitemap, navigation, page blueprint, or reusable section catalog.
+- Layout, typography, color, imagery, depth, motion, and restrained experimental effects.
+- Appearance-producing frontend work in the project's existing stack.
+- Art review against an approved direction or a scored visual/usability critique.
 
-Everything routes through [`skills/webdesign/SKILL.md`](skills/webdesign/SKILL.md) — load only the
-reference(s) your current job needs, never all 22 at once.
+It does not own backend behavior, application state and data architecture, reusable component API
+engineering, full WCAG audits, general SEO or campaign strategy, or product-growth planning unless
+the request also contains a website-design job.
 
-**The non-negotiable laws**, in brief (full text with the load-bearing quotes lives in SKILL.md):
+## Workflow
 
-- **Depth over flatness** — resolve every section into ≥2 planes, or at least one unifying texture.
-- **Contrast creates interest** — exactly one biggest/boldest element per section.
-- **One bold move + restraint** — spend boldness in one place; two bold moves compete and cancel.
-- **Design for the business, not "a website"** — set the premium↔information dial deliberately.
-- **Register first** — is the design the product, or does it serve it? Name it per surface.
-- **Refuse the named defaults** — check every draft against the anti-default catalog.
-- **Real content, real assets** — specific copy and real asset libraries over lorem/stock/emoji.
+Enter at the stage the request requires:
+
+1. **Direction** — define register, palette, type, layout, and one signature move.
+2. **Structure** — define sitemap, navigation, page blueprints, and stable section archetypes.
+3. **Per-section craft** — choose one bold move and the one or two devices that deliver it.
+4. **Build** — translate the approved appearance into the existing frontend stack.
+5. **Art review** — compare rendered evidence with the approved direction and return an A0-A3
+   punch list or sign-off.
+6. **Critique / QA** — run the scored, severity-routed go/no-go gate.
+
+The runtime router is [skills/webdesign/SKILL.md](skills/webdesign/SKILL.md). It links directly to
+22 focused references and instructs the agent to load only the smallest sufficient set.
 
 ## Install
 
-**skills.sh ecosystem:**
+With skills.sh:
+
 ```bash
-npx skills add gabros20/webdesign
+npx skills add gabros20/webdesign-skill
 ```
 
-**Clone + installer** (per-host targets):
+Or clone and install for a specific client:
+
 ```bash
-git clone https://github.com/gabros20/webdesign && cd webdesign
-./install.sh claude   # or: codex | cursor | antigravity | opencode | grok | hermes | agents | all
+git clone https://github.com/gabros20/webdesign-skill.git
+cd webdesign-skill
+./install.sh codex
 ```
 
-| Host | Installs to |
+| Target | Destination |
 |---|---|
-| **Claude Code** (`claude`) | `~/.claude/skills/webdesign` |
-| **Codex CLI / cross-agent standard** (`codex`, `agents`) | `~/.agents/skills/webdesign` |
-| **Cursor** (`cursor`) | `~/.cursor/skills/webdesign` |
-| **Antigravity** (`antigravity`) | `~/.gemini/config/skills/webdesign` (IDE) + `~/.gemini/antigravity-cli/skills/webdesign` (agy CLI) |
-| **opencode** (`opencode`) | `~/.config/opencode/skills/webdesign` |
-| **Grok Build** (`grok`) | `~/.grok/skills/webdesign` |
-| **Hermes** (`hermes`) | `~/.hermes/skills/webdesign` |
-| `all` | both `claude` and `agents` targets |
+| `codex` | `${CODEX_HOME:-$HOME/.codex}/skills/webdesign` |
+| `agents` | `~/.agents/skills/webdesign` |
+| `claude` | `~/.claude/skills/webdesign` |
+| `cursor` | `~/.cursor/skills/webdesign` |
+| `antigravity` | Gemini IDE and Antigravity CLI skill paths |
+| `opencode` | `~/.config/opencode/skills/webdesign` |
+| `grok` | `~/.grok/skills/webdesign` |
+| `hermes` | `~/.hermes/skills/webdesign` |
+| `all` | Claude, Codex, and the cross-agent path |
 
-**Manual:**
+The installer stages a complete copy before replacing an existing installation and restores the
+old copy if replacement fails.
+
+## Use
+
+Codex explicit invocation uses `$webdesign`:
+
+```text
+Use $webdesign to author a DESIGN.md for a fintech landing page.
+Use $webdesign to design a hero that does not look AI-generated.
+Use $webdesign to art-review this rendered build against its DESIGN.md.
+Use $webdesign to run a scored visual and usability critique.
+```
+
+Documentation may use `/webdesign` as shorthand. Other clients may expose a slash command,
+`@webdesign`, a skill tool, or natural-language activation.
+
+## Common routes
+
+| User intent | Primary reference | Result |
+|---|---|---|
+| Set a visual direction | [frontend-design-principles.md](skills/webdesign/references/frontend-design-principles.md) | Register and direction constraints |
+| Write a design-system contract | [design-direction.md](skills/webdesign/references/design-direction.md) | `DESIGN.md` and tokens |
+| Structure a site | [section-archetypes.md](skills/webdesign/references/section-archetypes.md) | Sitemap, blueprints, and section catalog |
+| Design one section | [section-design-workflow.md](skills/webdesign/references/section-design-workflow.md) | Concept, selected devices, and anti-boring check |
+| Build the approved appearance | [frontend-build-patterns.md](skills/webdesign/references/frontend-build-patterns.md) | Integrated visual frontend and self-check |
+| Compare build and direction | [art-review.md](skills/webdesign/references/art-review.md) | A0-A3 punch list or sign-off |
+| Run the go/no-go gate | [design-critique.md](skills/webdesign/references/design-critique.md) | Scored, severity-routed critique |
+
+## Outputs and completion
+
+Depending on the route, the skill produces a direction brief, `DESIGN.md`, site structure, section
+specification or implementation, visual frontend, art-review punch list, or scored critique.
+
+Work is complete only when requested artifacts exist, relevant viewports and states have been
+checked, assumptions and unresolved work are recorded, and any claimed visual review names the
+rendered evidence actually inspected.
+
+## Repository map
+
+```text
+.codex-plugin/plugin.json  Codex plugin and release metadata
+AGENTS.md / CLAUDE.md      repository and client-specific maintainer guidance
+skills/webdesign/          portable runtime skill and client metadata
+evals/                     activation, traversal, output, and compression fixtures
+docs/                      installation, usage, stages, recipes, research, and design records
+site/                      optional visual guide
+remotion/                  source for the visual guide's hero animation
+scripts/                   repository validation and token accounting
+```
+
+## Validate
+
 ```bash
-cp -R skills/webdesign ~/.claude/skills/webdesign   # or your host's skills dir
+scripts/check-sync
+scripts/count-skill-tokens
 ```
 
-## Quick start
+The gate validates runtime frontmatter, direct reference routing, reference headers and contents
+lists, plugin/client metadata, evaluation fixtures, internal links, executable scripts, and release
+version alignment.
 
-Invoke with `/webdesign` (or your host's skill invocation):
+## Documentation
 
-```
-/webdesign author a DESIGN.md for a fintech landing page
-/webdesign design a hero that doesn't look AI-generated
-/webdesign art-review this build
-/webdesign run a scored design critique on this page
-```
+- [Installation](docs/installation.md)
+- [Usage](docs/usage.md)
+- [Stages](docs/stages.md)
+- [Recipes](docs/recipes.md)
+- [Evaluation fixtures](evals/README.md)
 
-## Pick by job
+## Versioning and releases
 
-Read only what the job requires — the full 22-row table lives in
-[SKILL.md](skills/webdesign/SKILL.md#pick-by-job):
+Each release synchronizes `.codex-plugin/plugin.json`, the newest `CHANGELOG.md` release, git tag
+`v<version>`, and the matching GitHub Release. Runtime `SKILL.md` intentionally carries no version
+or repository metadata.
 
-| I need to… | Read |
-|---|---|
-| Decide a visual direction / take a point of view / avoid generic | [frontend-design-principles.md](skills/webdesign/references/frontend-design-principles.md) |
-| Record the direction as a DESIGN.md (format, tokens, CLI, lint) | [design-direction.md](skills/webdesign/references/design-direction.md) |
-| Check a draft against the current named AI tells | [anti-default-catalog.md](skills/webdesign/references/anti-default-catalog.md) |
-| Plan a site's pages, nav, footer, section catalog + archetypes | [section-archetypes.md](skills/webdesign/references/section-archetypes.md) |
-| Design/compose/build one distinctive section | [section-design-workflow.md](skills/webdesign/references/section-design-workflow.md) |
-| Build the frontend from a design (any stack; Next.js worked example) | [frontend-build-patterns.md](skills/webdesign/references/frontend-build-patterns.md) |
-| Review a finished build against its direction (punch-list) | [art-review.md](skills/webdesign/references/art-review.md) |
-| Run a scored review / go-no-go QA gate | [design-critique.md](skills/webdesign/references/design-critique.md) |
+## Contributing
 
-## Repo map
-
-```
-skills/webdesign/   the skill: SKILL.md (router) + references/ (22 reference files)
-docs/               the manual — installation, usage, stages, recipes
-site/               the visual guide, deploys to webdesign-skill.vercel.app
-scripts/check-sync  the release gate (repo-side tooling, NOT shipped with the skill)
-install.sh          installer (claude | codex | cursor | antigravity | opencode | grok | hermes | agents | all)
-```
-
-## Versioning & releases
-
-[SemVer](https://semver.org/). The current version lives in `skills/webdesign/SKILL.md`
-frontmatter (`version:`) and is tagged in git as `v<version>`. Every release updates the
-frontmatter, the **Version X.Y.Z** line in the SKILL.md body, and `CHANGELOG.md` together, and
-must pass `scripts/check-sync` — CI-enforced on every PR via
-[`.github/workflows/check-sync.yml`](.github/workflows/check-sync.yml).
+See [AGENTS.md](AGENTS.md) for repository invariants and [CONTRIBUTING.md](CONTRIBUTING.md) for the
+change and release workflow. The repository is independently versioned and does not require a
+sibling skill or collection checkout.
 
 ## License
 
 [MIT](LICENSE) · Tamás Gábor ([@gabros20](https://github.com/gabros20))
-
-Repo structure and release discipline templated from
-[github.com/gabros20/orchestrate](https://github.com/gabros20/orchestrate).

@@ -1,10 +1,11 @@
 # Recipes
 
-Copy-paste scenario prompts. There's no invocation grammar to compose here (see
+Copy-paste scenario prompts. Prefix any example with `Use $webdesign to` in Codex. There's no
+invocation grammar to compose here (see
 [usage.md](usage.md#there-is-no-invocation-grammar)) — each recipe is a natural-language prompt you
 hand to an agent with `webdesign` installed. For what each stage actually does and which references
 it draws from, see [stages.md](stages.md); for the full pick-by-job table, see
-[usage.md](usage.md#pick-by-job).
+[usage.md](usage.md#route-by-job).
 
 ## Direction
 

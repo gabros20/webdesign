@@ -1,164 +1,113 @@
 ---
 name: webdesign
-version: 1.2.0
 description: >-
-  End-to-end web design, art-direction, and frontend-build system for websites, landing pages,
-  marketing sites, and UI. This skill should be used whenever an agent designs, art-directs,
-  critiques, or builds a web page or interface — "design a website / section / landing page / hero",
-  "art direction" or "design direction", author or lint a "DESIGN.md" design system, "make it look
-  premium / not generic / not templated / not AI-generated", "design review / critique / QA a build",
-  pick a palette / typography / layout, add depth / motion / decoration to a section, structure a
-  site's sections and IA, map design tokens into a Tailwind v4 theme, or "build the frontend from a
-  design". Covers direction-setting, per-section craft (layout, type, color, depth, imagery, motion,
-  experimental WebGL), per-vertical strategy, trust/proof/conversion, the frontend build (Next.js +
-  Tailwind v4 as the worked example — the patterns port to any stack), and the
-  art-review + scored-critique gates.
-license: MIT
-metadata:
-  source: https://github.com/gabros20/webdesign
-  guide: https://webdesign-skill.vercel.app
+  Design and build distinctive websites, landing pages, and visual web interfaces from direction
+  through visual QA. Use for art direction, DESIGN.md systems, page IA, section
+  composition, typography, color, imagery, motion, conversion-aware layout, CSS/theme implementation,
+  or visual critique. Include frontend code only when it produces the approved appearance. Do not
+  use for application state or data architecture, backend work, component API engineering, full
+  accessibility audits, general SEO strategy, or growth planning unless
+  the request also requires website design.
 ---
 
 # Web Design Pro
 
-**Version 1.2.0** — if asked which version of webdesign is installed, answer from this line.
-(History: `CHANGELOG.md` in the source repo, github.com/gabros20/webdesign.)
+## Mission and boundary
 
-An end-to-end web design + art-direction + build system, distilled from a production website-rebuild
-pipeline. It takes a page from **creative direction → structure → per-section craft → build →
-art review → scored critique**, and every reference is copy-pasteable rather than abstract.
+Own everything between "what should this website look like" and "the pixels on screen match it":
+direction, structure, per-section craft, appearance-producing code, and visual review gates. This is
+a website-delivery specialty, not a replacement for general product design or frontend engineering.
+Engineering that does not change what the user sees—build tooling, state, data fetching, testing,
+component APIs, and backend behavior—remains outside the skill.
 
-**Scope.** This skill owns everything between "what should this look like" and "the pixels on
-screen match it" — direction, structure, per-section craft, the code that produces appearance
-(CSS, tokens, motion, section composition), and the review gates. Engineering that doesn't change
-what the user sees (build tooling, state, data fetching, testing, component-API design) is out of
-scope — see the hand-off list at the bottom. **Stack posture:** build guidance is written against
-one worked example (Next.js + Tailwind v4) because concrete beats abstract; the *patterns* are the
-contract and port to any framework or CSS tooling, and a project's existing stack always wins over
-the example.
+Operate independently when invoked alone. When approved briefs, content, architecture, or design
+artifacts are supplied, preserve them or report conflicts explicitly. Recommend adjacent skills at
+handoff; do not invoke them automatically.
 
-This SKILL.md is a **router**. Load only the reference(s) your current job needs — the whole point is
-that you never read all 22 at once. Everything lives in [`references/`](references/).
+Build guidance uses Next.js and Tailwind v4 as one concrete example. The patterns are the contract;
+the project's established framework, CSS tooling, and conventions always win.
 
-## The workflow arc
+## Core workflow
 
-Six stages. You can **enter at any stage** — "critique this page" jumps straight to 5–6; "build this
-from a design spec" starts at 4; a greenfield brand site runs 1→6.
+Enter at the earliest stage required by the request; do not replay upstream work when approved
+artifacts already exist.
 
-1. **Direction** — decide the taste/point-of-view (palette, type, register, the one signature) and
-   record it as a formal design-system contract.
-   → [frontend-design-principles.md](references/frontend-design-principles.md) ·
-   [design-direction.md](references/design-direction.md)
-2. **Structure** — turn the plan into a sitemap, navigation, footer, per-page section blueprints, and
-   a deduplicated section catalog keyed to reusable archetypes.
-   → [section-archetypes.md](references/section-archetypes.md)
-3. **Per-section craft** — for each section, pick one bold move and the 1–2 devices that deliver it,
-   then ship the CSS. Start from the craft router, load the specific device references it points to.
-   → [section-design-workflow.md](references/section-design-workflow.md) (the craft router) →
-   `layout-and-composition` · `typography` · `color-and-rhythm` · `depth-and-texture` · `decoration` ·
-   `imagery` · `motion-and-interaction` · `experimental-and-creative`, plus the strategy layer
-   (`niche-and-vertical-design` · `trust-proof-and-structure` · `persuasion-and-conversion`).
-4. **Build** — one component per section key in a fail-loud registry, DESIGN.md tokens applied as a
-   collision-free theme. Written against the reference stack (Next.js + Tailwind v4); the patterns
-   port to any framework.
-   → [frontend-build-patterns.md](references/frontend-build-patterns.md) ·
-   [tailwind-v4-theme.md](references/tailwind-v4-theme.md)
-5. **Art review** — the eye that set the direction judges the build section by section, at full
-   resolution, and hands back an A0–A3 punch-list (or signs off). Visual by nature: needs a local
-   serve + screenshot path and a model that reads images (capture-tooling contract in the reference).
-   → [art-review.md](references/art-review.md)
-6. **Critique / QA gate** — a scored, severity-routed pass (Nielsen 0–40, cognitive load, personas,
-   mechanical checks) that turns "looks good" into a go/no-go, checked against the named AI tells.
-   → [design-critique.md](references/design-critique.md) ·
-   [anti-default-catalog.md](references/anti-default-catalog.md)
+1. **Direction:** name the register and point of view; record palette, type, tokens, and signature.
+2. **Structure:** produce the sitemap, navigation, page blueprints, and deduplicated section catalog.
+3. **Craft:** give each section one bold move and one or two precisely executed devices.
+4. **Build:** implement the appearance layer against approved artifacts and the existing stack.
+5. **Art review:** inspect rendered evidence section by section and issue an A0-A3 punch list.
+6. **Critique gate:** score usability and visual quality, route findings, and decide go/no-go.
 
-Stages 1, 3, 5, and 6 also stand alone: you can set a direction without building, critique a page you
-didn't build, or run the craft router for a single section.
+## Route before acting
 
-## Pick by job
+Read only what the job requires. For a multi-part request, select the smallest set of rows that
+covers the requested artifacts; do not preload all references.
 
-Read only what the job requires.
+| User intent | Read | Expected contribution |
+|---|---|---|
+| **Decide a visual direction / take a point of view / avoid generic** | [Frontend design principles](references/frontend-design-principles.md) | Register, direction constraints, and anti-generic defaults |
+| **Record the direction as a DESIGN.md** | [Design direction](references/design-direction.md) | Design-system contract, tokens, and lintable specification |
+| **Map DESIGN.md tokens into Tailwind v4** | [Tailwind v4 theme](references/tailwind-v4-theme.md) | Collision-free theme mapping and width safeguards |
+| **Check a draft against named AI tells** | [Anti-default catalog](references/anti-default-catalog.md) | Concrete default-pattern findings and replacements |
+| **Plan pages, navigation, footer, and section catalog** | [Section archetypes](references/section-archetypes.md) | Sitemap, blueprint, and reusable section schema |
+| **Design and build one distinctive section** | [Section design workflow](references/section-design-workflow.md) | One bold move, selected devices, and an anti-boring check |
+| **Lay out a section or break the grid** | [Layout and composition](references/layout-and-composition.md) | Responsive composition pattern and CSS mechanism |
+| **Make type the primary visual device** | [Typography](references/typography.md) | Type hierarchy, pairing, scale, and implementation |
+| **Set palette and section rhythm** | [Color and rhythm](references/color-and-rhythm.md) | Palette roles, contrast, and light/dark cadence |
+| **Add depth without visual clutter** | [Depth and texture](references/depth-and-texture.md) | Layering, texture, lighting, and shadow treatment |
+| **Add patterns, dividers, or cutouts** | [Decoration](references/decoration.md) | Restrained decorative system with implementation examples |
+| **Present imagery as more than rectangles** | [Imagery](references/imagery.md) | Art direction, framing, treatment, and responsive behavior |
+| **Add motion or scroll interaction** | [Motion and interaction](references/motion-and-interaction.md) | Motion hierarchy, reduced-motion behavior, and implementation |
+| **Use WebGL, shaders, particles, or custom cursors** | [Experimental techniques](references/experimental-and-creative.md) | Feasibility boundary, progressive enhancement, and effect pattern |
+| **Design for a specific business or vertical** | [Niche and vertical design](references/niche-and-vertical-design.md) | Premium-information dial and vertical-specific proof strategy |
+| **Build credibility, proof, E-E-A-T, or case-study structure** | [Trust, proof, and structure](references/trust-proof-and-structure.md) | Trust architecture and design-level SEO contribution |
+| **Improve ethical persuasion and conversion through design** | [Persuasion and conversion](references/persuasion-and-conversion.md) | Conversion hierarchy, proof placement, and friction reduction |
+| **Choose and judge a composition approach** | [Design thinking](references/design-thinking.md) | Decision process, alternatives, and self-critique |
+| **Build the visual frontend from an approved design** | [Frontend build patterns](references/frontend-build-patterns.md) | Section registry, token application, assets, and visual self-check |
+| **Review a build against its approved direction** | [Art review](references/art-review.md) | Evidence-backed A0-A3 punch list or sign-off |
+| **Run a scored visual and usability QA gate** | [Design critique](references/design-critique.md) | Severity-routed scorecard and go/no-go decision |
+| **Trace a technique to its source** | [Sources](references/SOURCES.md) | Provenance and external reading |
 
-| I need to… | Read |
-|---|---|
-| **Decide a visual direction / take a point of view / avoid generic** | [frontend-design-principles.md](references/frontend-design-principles.md) |
-| **Record the direction as a DESIGN.md (format, tokens, CLI, lint)** | [design-direction.md](references/design-direction.md) |
-| **Map DESIGN.md tokens → a Tailwind v4 theme (no `max-w` collapse)** | [tailwind-v4-theme.md](references/tailwind-v4-theme.md) |
-| **Check a draft against the current named AI tells** | [anti-default-catalog.md](references/anti-default-catalog.md) |
-| **Plan a site's pages, nav, footer, section catalog + archetypes** | [section-archetypes.md](references/section-archetypes.md) |
-| **Design/compose/build one distinctive section** | [section-design-workflow.md](references/section-design-workflow.md) → its device map |
-| **Lay out a section / break the grid** | [layout-and-composition.md](references/layout-and-composition.md) |
-| **Make type the hero** | [typography.md](references/typography.md) |
-| **Set palette + section rhythm (light↔dark cadence, one accent)** | [color-and-rhythm.md](references/color-and-rhythm.md) |
-| **Make it feel 3D / premium / not flat** | [depth-and-texture.md](references/depth-and-texture.md) |
-| **Add decoration (patterns, dividers, cutouts) without noise** | [decoration.md](references/decoration.md) |
-| **Present images as more than rectangles** | [imagery.md](references/imagery.md) |
-| **Add motion / scroll interaction** | [motion-and-interaction.md](references/motion-and-interaction.md) |
-| **Go Awwwards-tier (WebGL, shaders, particles, custom cursor)** | [experimental-and-creative.md](references/experimental-and-creative.md) |
-| **Design for a specific business/vertical + set the premium↔info dial** | [niche-and-vertical-design.md](references/niche-and-vertical-design.md) |
-| **Build credibility / E-E-A-T / SEO structure / case studies** | [trust-proof-and-structure.md](references/trust-proof-and-structure.md) |
-| **Drive & convert the user ethically (Cialdini, CCD, copy↔design)** | [persuasion-and-conversion.md](references/persuasion-and-conversion.md) |
-| **Decide what to do & judge it (composition process, AI-slop tells)** | [design-thinking.md](references/design-thinking.md) |
-| **Build the frontend from a design (any stack; Next.js worked example)** | [frontend-build-patterns.md](references/frontend-build-patterns.md) |
-| **Review a finished build against its direction (punch-list)** | [art-review.md](references/art-review.md) |
-| **Run a scored review / go-no-go QA gate** | [design-critique.md](references/design-critique.md) |
-| **Trace a technique to its source** | [SOURCES.md](references/SOURCES.md) |
+## Universal invariants
 
-## The non-negotiable laws
+- Name the register per surface: marketing and brand surfaces reward distinction; dense product
+  surfaces reward earned familiarity.
+- Design for the subject and business stakes. Sequence emotional impact, proof, and low-friction
+  action instead of blending them into a generic compromise.
+- Give each section depth, one focal point, a meaningful contrast jump, and one bold move supported
+  by no more than one or two devices.
+- Use real content and real assets. Do not hide weak decisions behind lorem ipsum, stock imagery,
+  emoji icons, or invented proof.
+- Check every result against named defaults and the anti-boring gate; remove one decorative move
+  before shipping.
+- Preserve responsive behavior, interaction states, reduced motion, and legibility while pursuing
+  distinctiveness.
 
-These govern every technique in the references — the load-bearing ones, quoted:
+## Artifact contract
 
-1. **Depth over flatness.** A boring section is one flat plane (text + an image-square on a solid
-   fill). Resolve every section into ≥2 planes, or at least one unifying texture/glow/shadow.
-2. **Contrast creates interest.** Manufacture a real jump in *scale*, *weight*, *color*, or *depth*.
-   Exactly one element per section is unambiguously the biggest/boldest. Even spacing + even weight =
-   forgettable.
-3. **One bold move + restraint.** Spend boldness in ONE place — a giant type lockup, a single
-   saturated accent, one striking image, one experimental interaction — and keep everything else
-   quiet so that move lands. *"Two bold moves compete and cancel; zero = generic."* The cardinal rule:
-   **use one or two devices per section, executed precisely — never all of them at once.**
-4. **Design for the *business*, not "a website."** Before the moves, set the **premium↔information
-   dial**: a niche site must be premium (noticed, remembered, trusted) *and* deliver proof (answer
-   questions, prove competence). Don't blend them — *sequence* them (restrained emotional hero →
-   progressively denser proof → low-friction action). Where you set the dial is decided by
-   **stakes & emotion, not taste**.
-5. **Register first — is the design the product, or does it serve it?** Brand sites / landing pages /
-   marketing = **design IS the product**, distinctiveness is the bar, take the risk. Dashboards /
-   app shells / dense daily tools = **design SERVES the product**, earned familiarity is the bar; this
-   *inverts* several defaults (fixed rem scale, full interactive-state coverage, boring proven
-   patterns, and Inter/SF Pro is a legitimate pick, not a tell). Name the register **per surface**.
-   Full doctrine:
-   [frontend-design-principles.md](references/frontend-design-principles.md#register-is-the-design-the-product-or-does-it-serve-it).
-6. **Refuse the named defaults.** Models default to the same look regardless of subject (cream+serif+
-   terracotta; near-black+acid accent; broadsheet mono; Inter; indigo-600/slate-900; eyebrow chips;
-   01/02/03 markers; three identical feature cards). Run every draft against
-   [anti-default-catalog.md](references/anti-default-catalog.md) — and avoid the *predictable
-   anti-default rebound* too.
-7. **Real content, real assets.** Specific copy and real asset libraries (a proper icon set held to
-   one weight, real flag/logo/pattern libraries) over lorem, stock, emoji-as-icons, and hand-rolled
-   SVG. Generic content is the loudest AI tell; a wrong-for-meaning or mixed-weight icon is a real
-   defect at review, not a nitpick.
+Produce only the artifacts the request needs. Depending on the selected route, these may include a
+visual-direction brief, `DESIGN.md`, sitemap and section catalog, section implementation, complete
+appearance layer, art-review punch list, or scored critique. Every artifact must record its input
+constraints, material assumptions, and whether code is exploratory, visual-reference, or intended
+for production integration.
 
-The always-run gate on any section: the **anti-boring checklist** in
-[section-design-workflow.md](references/section-design-workflow.md) (depth · one focal point · a
-contrast move · one signature · grayscale test · one spacing scale · quality floor). And Chanel's
-rule — before shipping, remove one accessory.
+## Completion and handoff
 
-## Complementary global skills (don't duplicate these)
+Before completion:
 
-This skill owns web design *direction, craft, build, and review*. Hand off to these for adjacent jobs:
+- Confirm every requested page, section, state, or review artifact exists.
+- Validate the result at the viewports and interaction states relevant to the request.
+- For visual review, state which rendered evidence was actually inspected; never imply screenshot
+  review when only code was available.
+- Record unresolved content, asset, accessibility, engineering, SEO, or measurement work with an
+  owner rather than silently absorbing it.
+- When downstream implementation or assurance is expected, provide artifact paths, constraints,
+  decisions, risks, and the recommended next skill without duplicating the full artifact.
 
-- **generate-image** / **generate-video** — actually generating the images/video/backgrounds a
-  direction calls for (prompt shape, model steering). This skill decides *what asset a slot needs*;
-  those skills produce it.
-- **building-components** — engineering a reusable component's API, composability, and a11y
-  internals (the durable component library), where this skill covers composing *sections* from them.
-- **extract-design-system** — mining tokens/primitives from an existing public site to seed a project
-  (a good input to stage 1's direction).
-- **accessibility** — a full WCAG 2.2 audit (screen-reader, keyboard, ARIA). Stage 6 here does a
-  design-level contrast/focus pass; that skill goes deep.
-- **scroll-driven-video** · **transparent-web-video** · **safari-mobile-optimization** — specialist
-  web techniques for scroll-scrubbed video, alpha/transparent hero video, and iOS/Safari browser-chrome
-  hardening, when a section's signature move needs them.
-- **prototype** — throwaway exploration of several radically different UI variations before committing
-  to one direction.
+## Adjacent handoffs
+
+Recommend, but do not automatically invoke, adjacent capabilities for asset generation, reusable
+component API engineering, design-system extraction, full WCAG auditing, specialized browser/media
+techniques, or throwaway multi-direction prototyping. This skill specifies visual requirements and
+passes forward the approved artifacts; the adjacent capability owns its specialist output.

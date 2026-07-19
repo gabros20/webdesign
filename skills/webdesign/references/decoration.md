@@ -1,5 +1,32 @@
 # Decorative Devices
 
+Purpose: Add restrained patterns, texture, dividers, or branded decorative devices without visual noise.
+
+Read when:
+- A section needs depth, identity, or eye guidance beyond its structural layout.
+
+Skip when:
+- The composition already has sufficient visual devices or decoration would compete with the focal point.
+
+Inputs:
+- Section composition, brand motifs, and the intended focal element.
+
+Produces:
+- One or two justified decorative devices with implementation and restraint rules.
+
+## Contents
+
+- 1. SVG background patterns (dot grid, blueprint grid, hairlines)
+- 2. SVG noise / grain
+- 3. Section dividers — waves, slants, curves (clip-path / SVG)
+- 4. Organic blobs / shapes as color accents
+- 5. Decorative lines & connectors (lead the eye)
+- 6. PNG / 3D cutout objects as relevant decorations (Stripe-style)
+- 7. Logo / brand mark as background texture
+- 8. Gradient mesh / glow decoration
+- Generator toolbox (fast, free)
+- The discipline
+
 Decoration that **elevates, not clutters**. The test: does it add depth/brand/eye-guidance, or is it noise? Use sparingly — one or two per section. Each entry: **why → how (+ tool) → pitfall (how it looks cheap).**
 
 ---

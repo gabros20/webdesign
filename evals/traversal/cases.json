@@ -1,0 +1,50 @@
+[
+  {
+    "id": "direction-contract",
+    "prompt": "Author a DESIGN.md for a restrained luxury travel landing page.",
+    "expected_references": ["references/frontend-design-principles.md", "references/design-direction.md"],
+    "forbidden_references": ["references/frontend-build-patterns.md", "references/art-review.md"]
+  },
+  {
+    "id": "single-section",
+    "prompt": "Design one editorial feature section with asymmetric layout and expressive type.",
+    "expected_references": ["references/section-design-workflow.md", "references/layout-and-composition.md", "references/typography.md"],
+    "forbidden_references": ["references/section-archetypes.md", "references/tailwind-v4-theme.md"]
+  },
+  {
+    "id": "site-structure",
+    "prompt": "Turn this content plan into a sitemap, navigation, footer, and reusable section catalog.",
+    "expected_references": ["references/section-archetypes.md"],
+    "forbidden_references": ["references/experimental-and-creative.md", "references/motion-and-interaction.md"]
+  },
+  {
+    "id": "visual-build",
+    "prompt": "Build the approved website appearance in the existing Nuxt project.",
+    "expected_references": ["references/frontend-build-patterns.md"],
+    "forbidden_references": ["references/design-thinking.md", "references/SOURCES.md"]
+  },
+  {
+    "id": "tailwind-theme",
+    "prompt": "Translate this DESIGN.md token set into Tailwind v4.",
+    "expected_references": ["references/tailwind-v4-theme.md"],
+    "forbidden_references": ["references/art-review.md", "references/design-critique.md"]
+  },
+  {
+    "id": "art-review",
+    "prompt": "Compare the rendered page with its DESIGN.md and return an A0-A3 punch list.",
+    "expected_references": ["references/art-review.md"],
+    "forbidden_references": ["references/section-archetypes.md", "references/design-direction.md"]
+  },
+  {
+    "id": "scored-critique",
+    "prompt": "Run the scored visual and usability go/no-go gate on this finished page.",
+    "expected_references": ["references/design-critique.md", "references/anti-default-catalog.md"],
+    "forbidden_references": ["references/tailwind-v4-theme.md", "references/experimental-and-creative.md"]
+  },
+  {
+    "id": "trust-structure",
+    "prompt": "Restructure this service page so proof, expertise, and case studies create trust.",
+    "expected_references": ["references/trust-proof-and-structure.md"],
+    "forbidden_references": ["references/motion-and-interaction.md", "references/frontend-build-patterns.md"]
+  }
+]

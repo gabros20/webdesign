@@ -1,0 +1,22 @@
+[
+  {
+    "id": "design-direction",
+    "prompt": "Create a DESIGN.md for a premium accounting-firm website.",
+    "assertions": ["names the surface register", "defines tokens and one signature move", "records constraints and assumptions", "does not claim production implementation"]
+  },
+  {
+    "id": "section-build",
+    "prompt": "Design and implement one distinctive testimonial section in the existing stack.",
+    "assertions": ["uses one bold move", "includes responsive behavior", "preserves existing stack conventions", "reports validation performed"]
+  },
+  {
+    "id": "art-review",
+    "prompt": "Art-review this rendered page against its approved direction.",
+    "assertions": ["states rendered evidence inspected", "returns severity-routed findings", "distinguishes defects from preferences", "provides sign-off or an actionable punch list"]
+  },
+  {
+    "id": "honest-degrade",
+    "prompt": "Review this page, but no browser or screenshots are available.",
+    "assertions": ["states that no rendered build was inspected", "labels the result as code-level review", "does not claim visual sign-off"]
+  }
+]

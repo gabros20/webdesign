@@ -1,5 +1,19 @@
 # Color & Section Rhythm
 
+Purpose: Choose and implement a disciplined palette and value rhythm across website sections.
+
+Read when:
+- The selected section or page needs palette roles, contrast, or light-dark cadence.
+
+Skip when:
+- Color is already approved and the task does not change visual color behavior.
+
+Inputs:
+- Brand constraints, content sequence, background roles, and accessibility needs.
+
+Produces:
+- Palette roles, section cadence, contrast checks, and implementation guidance.
+
 Color does two jobs: **set the palette** (one accent, disciplined neutrals) and **create
 rhythm down the page** (alternating value). Each entry: **why → how → pitfall.**
 

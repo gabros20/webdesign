@@ -1,0 +1,14 @@
+[
+  {
+    "id": "direction-and-build",
+    "prompt": "Give this landing page a distinctive direction, implement its appearance, and review the render.",
+    "variants": ["no-skill", "v1.2.0", "v1.3.0"],
+    "preserve": ["direction specificity", "route precision", "visual validation honesty", "artifact completeness"]
+  },
+  {
+    "id": "adjacent-skill-boundary",
+    "prompt": "Improve the backend cache invalidation for this website.",
+    "variants": ["no-skill", "v1.2.0", "v1.3.0"],
+    "preserve": ["correct non-activation", "no website-design scope creep"]
+  }
+]

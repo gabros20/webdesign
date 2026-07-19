@@ -1,5 +1,27 @@
 # Design critique — a scored review rubric
 
+Purpose: Run a repeatable scored visual and usability review that produces a go or no-go decision.
+
+Read when:
+- The request asks for structured critique, severity routing, or a final visual QA gate.
+
+Skip when:
+- The request is an art-direction comparison against one approved design; use art-review instead.
+
+Inputs:
+- Rendered interface, target personas, constraints, and available mechanical checks.
+
+Produces:
+- Scored findings, severity, synthesis, and a go or no-go result.
+
+## Contents
+
+- Assessment A — heuristic and cognitive-load review
+- Assessment B — mechanical checks
+- Severity routing
+- Synthesis
+- Go/no-go gate
+
 A repeatable way to *review* an interface, not just admire it. Use it for self-critique while
 building (see
 [frontend-design-principles.md](frontend-design-principles.md#restraint-and-self-critique)) and as

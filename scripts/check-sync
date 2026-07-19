@@ -1,148 +1,32 @@
 #!/usr/bin/env bash
-# check-sync — release gate for the webdesign skill (repo-side tooling; NOT shipped with the
-# skill). Run from anywhere in the repo before a release.
-#
-# 1. Frontmatter shape: SKILL.md exists and its frontmatter carries name/version/description/
-#    license/metadata.
-# 2. Version sync: frontmatter `version:` == the "**Version X.Y.Z**" line in the SKILL.md body
-#    == the topmost `## [X.Y.Z]` release heading in CHANGELOG.md.
-# 3. No orphans: every references/*.md file is mentioned by filename somewhere in SKILL.md, and
-#    every `references/<file>.md` SKILL.md mentions exists on disk.
-# 4. Cross-links: every relative `.md` link inside references/*.md resolves to an existing
-#    sibling file, and every `#anchor` fragment resolves to a matching header (github-style slug)
-#    in the target file.
-# 5. No frontmatter in any references/*.md (first line must not be `---`).
-# 6. Leakage guard: no mention of RUN_DIR, run.json, progress.jsonl, or private source-pipeline internals
-#    (incl. the case-insensitive source-CMS name) inside skills/webdesign/ — this skill is standalone.
-# 7. SKILL.md line budget (<=200 lines).
-# 8. install.sh passes `bash -n`, and its `cp -R` source dir (skills/webdesign) exists.
-set -uo pipefail
+# Universal repository gate. Skill-specific repositories may run additional checks after this one.
+set -euo pipefail
 
 root="$(cd "$(dirname "$0")/.." && pwd)"
-skill="$root/skills/webdesign"
-skillmd="$skill/SKILL.md"
-refs="$skill/references"
-changelog="$root/CHANGELOG.md"
-installsh="$root/install.sh"
 
-fail=0
-err() { echo "check-sync: FAIL: $1" >&2; fail=1; }
-note() { echo "check-sync: $1"; }
+bash -n "$root/install.sh" "$root/scripts/check-sync"
+[ ! -f "$root/scripts/init" ] || bash -n "$root/scripts/init"
+[ ! -f "$root/scripts/test-init" ] || bash -n "$root/scripts/test-init"
+python3 -m py_compile "$root/scripts/lint-skill" "$root/scripts/count-skill-tokens"
 
-slugify() { # github-style header slug
-  printf '%s' "$1" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9 -]//g; s/ +/-/g; s/^-+//; s/-+$//'
-}
-
-# --- 1. frontmatter shape ------------------------------------------------------------
-if [ ! -f "$skillmd" ]; then
-  err "skills/webdesign/SKILL.md missing"
-else
-  frontmatter="$(awk '/^---$/{c++; next} c==1' "$skillmd")"
-  fm_name="$(printf '%s\n' "$frontmatter" | grep -m1 -E '^name:' | sed -E 's/^name: *//')"
-  fm_version="$(printf '%s\n' "$frontmatter" | grep -m1 -E '^version:' | sed -E 's/^version: *//')"
-  fm_desc_n="$(printf '%s\n' "$frontmatter" | grep -c -E '^description:')"
-  fm_license="$(printf '%s\n' "$frontmatter" | grep -m1 -E '^license:' | sed -E 's/^license: *//')"
-  fm_meta_n="$(printf '%s\n' "$frontmatter" | grep -c -E '^metadata:')"
-
-  [ "$fm_name" = "webdesign" ] || err "frontmatter name != webdesign (got '${fm_name:-<missing>}')"
-  [ -n "$fm_version" ] || err "frontmatter version: missing"
-  [ "$fm_desc_n" -ge 1 ] || err "frontmatter description: missing"
-  [ -n "$fm_license" ] || err "frontmatter license: missing"
-  [ "$fm_meta_n" -ge 1 ] || err "frontmatter metadata: missing"
-fi
-
-# --- 2. version sync: frontmatter == body "**Version X.Y.Z**" == topmost CHANGELOG heading ----
-body_version="$(grep -oE '\*\*Version [0-9]+\.[0-9]+\.[0-9]+\*\*' "$skillmd" 2>/dev/null | head -1 | grep -oE '[0-9]+\.[0-9]+\.[0-9]+')"
-changelog_version="$(grep -oE '^## \[[0-9]+\.[0-9]+\.[0-9]+\]' "$changelog" 2>/dev/null | head -1 | grep -oE '[0-9]+\.[0-9]+\.[0-9]+')"
-[ -n "$body_version" ] || err "no '**Version X.Y.Z**' line found in SKILL.md body"
-[ -n "$changelog_version" ] || err "no topmost '## [X.Y.Z]' release heading found in CHANGELOG.md"
-if [ -n "${fm_version:-}" ] && [ -n "$body_version" ] && [ -n "$changelog_version" ]; then
-  if [ "$fm_version" = "$body_version" ] && [ "$body_version" = "$changelog_version" ]; then
-    note "version in sync: $fm_version"
-  else
-    err "version mismatch — frontmatter=$fm_version body=$body_version changelog=$changelog_version"
+if [ -d "$root/skills/__SKILL_NAME__" ]; then
+  repo="${GITHUB_REPOSITORY:-}"
+  if [ "$(basename "$root")" != "skill-template" ] || { [ -n "$repo" ] && [ "$repo" != "gabros20/skill-template" ]; }; then
+    echo "check-sync: FAIL: uninstantiated template in a derived repository; run scripts/init" >&2
+    exit 1
   fi
+  "$root/scripts/lint-skill"
+  [ ! -x "$root/scripts/test-init" ] || "$root/scripts/test-init"
+  echo "check-sync: OK — source template and initializer regression test passed"
+  exit 0
 fi
 
-# --- 3. no orphans ---------------------------------------------------------------------
-if [ -d "$refs" ]; then
-  for f in "$refs"/*.md; do
-    [ -e "$f" ] || continue
-    base="$(basename "$f")"
-    grep -qF "$base" "$skillmd" 2>/dev/null || err "references/$base is not referenced anywhere in SKILL.md (orphan)"
-  done
-  while IFS= read -r rel; do
-    [ -n "$rel" ] || continue
-    b="$(basename "$rel")"
-    [ -f "$refs/$b" ] || err "SKILL.md mentions $rel but $refs/$b does not exist"
-  done < <(grep -oE 'references/[A-Za-z0-9_.-]+\.md' "$skillmd" 2>/dev/null | sort -u)
-else
-  err "skills/webdesign/references/ missing"
-fi
+"$root/scripts/lint-skill"
 
-# --- 4. cross-links + anchors -----------------------------------------------------------
-anchor_exists() { # anchor_exists <anchor> <file>
-  local anchor="$1" file="$2" hdr slug
-  while IFS= read -r hdr; do
-    slug="$(slugify "$(printf '%s' "$hdr" | sed -E 's/^#{1,6} *//')")"
-    [ "$slug" = "$anchor" ] && return 0
-  done < <(grep -E '^#{1,6} ' "$file")
-  return 1
-}
-
-if [ -d "$refs" ]; then
-  for f in "$refs"/*.md; do
-    [ -e "$f" ] || continue
-    dir="$(dirname "$f")"
-    while IFS= read -r link; do
-      [ -n "$link" ] || continue
-      target="${link%%#*}"
-      anchor=""
-      case "$link" in *"#"*) anchor="${link#*#}" ;; esac
-      tf="$dir/$target"
-      if [ ! -f "$tf" ]; then
-        err "$(basename "$f"): link target '$target' does not exist"
-        continue
-      fi
-      if [ -n "$anchor" ] && ! anchor_exists "$anchor" "$tf"; then
-        err "$(basename "$f"): anchor '#$anchor' not found in $target"
-      fi
-    done < <(grep -oE '\]\([A-Za-z0-9_./-]+\.md(#[A-Za-z0-9_-]+)?\)' "$f" | sed -E 's/^\]\(//; s/\)$//')
-  done
-fi
-
-# --- 5. no frontmatter in references/*.md ------------------------------------------------
-if [ -d "$refs" ]; then
-  for f in "$refs"/*.md; do
-    [ -e "$f" ] || continue
-    first_line="$(head -1 "$f")"
-    [ "$first_line" != "---" ] || err "$(basename "$f") starts with '---' — references must not carry frontmatter"
-  done
-fi
-
-# --- 6. leakage guard ---------------------------------------------------------------------
-if [ -d "$skill" ]; then
-  hits="$(grep -rin -E 'RUN_DIR|run\.json|progress\.jsonl|brease' "$skill" 2>/dev/null || true)"
-  if [ -n "$hits" ]; then
-    err "leakage guard: found source-pipeline internals inside skills/webdesign/ —
-$hits"
+while IFS= read -r -d '' script; do
+  if head -1 "$script" | grep -qE '^#!/usr/bin/env bash|^#!/bin/bash'; then
+    bash -n "$script"
   fi
-fi
+done < <(find "$root/skills" -type f -path '*/scripts/*' -print0)
 
-# --- 7. SKILL.md line budget ---------------------------------------------------------------
-if [ -f "$skillmd" ]; then
-  n="$(wc -l < "$skillmd")"
-  [ "$n" -le 200 ] || err "SKILL.md exceeds its 200-line budget ($n lines)"
-fi
-
-# --- 8. install.sh sanity -------------------------------------------------------------------
-if [ -f "$installsh" ]; then
-  bash -n "$installsh" || err "install.sh fails 'bash -n' syntax check"
-  grep -qF 'cp -R "$here/skills/webdesign"' "$installsh" || err "install.sh cp -R source dir skills/webdesign not found"
-  [ -d "$skill" ] || err "install.sh source dir skills/webdesign does not exist"
-else
-  err "install.sh missing"
-fi
-
-if [ "$fail" -eq 0 ]; then note "OK — version in sync, no orphans, links resolve, no frontmatter leakage, install.sh sane"; fi
-exit "$fail"
+echo "check-sync: OK — package, routes, references, metadata, eval fixtures, and scripts validated"

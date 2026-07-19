@@ -1,5 +1,29 @@
 # Experimental & Creative (the Awwwards tier)
 
+Purpose: Select and constrain one high-impact experimental interaction or rendering technique.
+
+Read when:
+- The brief calls for a signature WebGL, canvas, cursor, transition, or generative moment.
+
+Skip when:
+- A CSS-level solution meets the goal or performance and accessibility constraints rule out experimental effects.
+
+Inputs:
+- Creative objective, target devices, performance budget, and fallback requirements.
+
+Produces:
+- One justified experimental technique with progressive enhancement and exit criteria.
+
+## Contents
+
+- 1. WebGL / shader gradient & liquid backgrounds (the premium hero canvas)
+- 2. Canvas particle systems / interactive backgrounds
+- 3. Custom cursors & cursor-driven effects
+- 4. View Transitions API (cinematic state & page changes)
+- 5. Generative / creative-coding accents
+- The award-winner's discipline (synthesized from Awwwards judging)
+- When to reach here vs stay in CSS
+
 This is the layer that takes a section from "clean and modern" to *award-winning*. It is heavier (WebGL,
 canvas, JS) and **must be rationed**: the research is unanimous — every Awwwards Site-of-the-Day shares
 **one signature moment that makes you stop scrolling, not twenty effects**. Custom interaction is the

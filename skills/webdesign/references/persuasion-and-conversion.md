@@ -1,5 +1,29 @@
 # Persuasion & Conversion
 
+Purpose: Improve ethical conversion through visual hierarchy, proof placement, copy-design pairing, and friction reduction.
+
+Read when:
+- The website must help users make a clear, informed action or resolve conversion friction through design.
+
+Skip when:
+- The request is campaign strategy, funnel analytics, pricing strategy, or deceptive persuasion.
+
+Inputs:
+- User intent, desired action, objections, proof, content, and ethical constraints.
+
+Produces:
+- Conversion-oriented section decisions with rationale, safeguards, and measurable hypotheses.
+
+## Contents
+
+- 1. Cialdini's 7 principles as sections
+- 2. Cognitive biases as UX devices
+- 3. Conversion-Centered Design
+- 4. Persuasive copy ↔ design pairing
+- 5. Emotional design & first impressions
+- 6. Premium / luxury psychology & pricing mechanics
+- The ethical line (keep every device honest)
+
 The marketing/psychology layer — how to drive and please the user and convert — as concrete design
 devices. Each: **what · why · how (in a section) · pitfall.** Ethical line up front: honest persuasion
 **reduces friction to a decision the user genuinely wants**; a dark pattern **manufactures a decision

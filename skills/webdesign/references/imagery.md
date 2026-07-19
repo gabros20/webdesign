@@ -1,5 +1,32 @@
 # Image Presentation (beyond plain rectangles)
 
+Purpose: Art-direct and implement image framing, treatment, and responsive presentation beyond plain rectangles.
+
+Read when:
+- Images are a primary visual device or their current presentation feels generic.
+
+Skip when:
+- The request only sources or generates image content; use the appropriate asset-generation capability.
+
+Inputs:
+- Available imagery, content role, crop constraints, layout, and performance requirements.
+
+Produces:
+- An image-treatment system with framing, responsive behavior, and implementation details.
+
+## Contents
+
+- 1. Masked / clipped image shapes (arch, circle, blob, angle)
+- 2. SVG masks & reveal-on-scroll masks
+- 3. Text over image — readable scrim / overlay
+- 4. Masonry & mixed-aspect galleries
+- 5. Breakout / full-bleed / overlap
+- 6. Device / browser mockups & tilted 3D screenshots
+- 7. Collage / scattered / pinned-photo
+- 8. Ken Burns / slow zoom & parallax
+- 9. Foundations: object-fit · aspect-ratio · art direction
+- Cheat sheet (goal → primary lever)
+
 Images that read as *designed, layered, intentional* (Godly / Awwwards / Apple). Each: **why → how →
 example → pitfall.** Default crime is "stock photo in a box."
 

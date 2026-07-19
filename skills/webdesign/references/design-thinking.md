@@ -1,5 +1,28 @@
 # Design Thinking, Composition & Critique
 
+Purpose: Choose, compose, and self-critique a coherent visual approach instead of accumulating unrelated techniques.
+
+Read when:
+- The agent must decide among composition options or explain why a visual move fits the brief.
+
+Skip when:
+- The direction and composition are already approved and only mechanical implementation remains.
+
+Inputs:
+- Brief, direction, content hierarchy, and candidate ideas.
+
+Produces:
+- A justified composition choice, refinement pass, and critique.
+
+## Contents
+
+- Composition process
+- Core composition principles
+- Templated-design diagnosis
+- One bold move and restraint
+- Refinement checklist
+- Critique framework
+
 How a strong designer *decides what to do* and *judges it*. This is the layer that prevents a pile of
 techniques from reading as templated. Pairs with the direction layer — the taste/point-of-view that
 sets palette, type, and brand register ([frontend-design-principles.md](frontend-design-principles.md))

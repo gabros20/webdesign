@@ -1,5 +1,29 @@
 # Trust, Proof & Structure
 
+Purpose: Design credibility, proof, information architecture, and SEO-aware structure where they affect the website experience.
+
+Read when:
+- A page must communicate expertise, evidence, trust, or findable content structure.
+
+Skip when:
+- The request is general SEO strategy, backlink acquisition, keyword planning, or backend structured-data implementation.
+
+Inputs:
+- Audience objections, expertise evidence, proof assets, content hierarchy, and target actions.
+
+Produces:
+- Trust architecture, proof placement, case-study structure, and design-level SEO requirements.
+
+## Contents
+
+- 1. The three credibility layers (build all)
+- 2. E-E-A-T as design (Experience · Expertise · Authoritativeness · Trust)
+- 3. Social-proof devices (and where to put them)
+- 4. Information architecture
+- 5. SEO-aware structure (where SEO and design overlap)
+- 6. Case-study / proof-page anatomy
+- 7. Presenting dense information without killing the premium aesthetic
+
 The cross-cutting layer that makes a niche site both **credible** and **findable** — trust/proof design,
 information architecture, and SEO-aware structure, as concrete design devices. This is the "high-quality
 information and proof" half of the premium↔info dial (`niche-and-vertical-design.md`).

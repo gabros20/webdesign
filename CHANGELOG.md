@@ -7,10 +7,30 @@ Versioning: [SemVer](https://semver.org/) — **MAJOR** = workflow-arc or refere
 **MINOR** = new stages/references/material that changes behavior, **PATCH** = fixes, doc
 corrections, wording tuning with unchanged behavior.
 
-The skill's current version lives in `skills/webdesign/SKILL.md` frontmatter (`version:`) and is
-tagged in git as `v<version>`. Every release PR updates **both** plus this file, and must pass
-`scripts/check-sync` (version sync across frontmatter/body/changelog, no orphan references, every
-cross-link and anchor resolved, internal-tooling leakage guard — CI-enforced on every PR).
+The release procedure synchronizes `.codex-plugin/plugin.json`, this changelog, git tag
+`v<version>`, and the matching GitHub Release. Runtime `SKILL.md` contains no version metadata.
+
+## [1.3.0] — 2026-07-17
+
+### Added
+- Codex plugin packaging and `agents/openai.yaml` client metadata.
+- Activation, traversal, output, and compression-ablation evaluation fixtures.
+- Repository-local high-signal validation for frontmatter, direct reference routing, reference
+  primacy headers, contents lists, metadata, scripts, and evaluation fixtures.
+- Explicit artifact, completion, standalone-use, and adjacent-skill handoff contracts.
+- Repository-specific `AGENTS.md` and `CLAUDE.md` guidance, enforced by the baseline gate.
+
+### Changed
+- Tightened activation around website design and appearance-producing frontend work, with explicit
+  exclusions for backend, state/data architecture, component APIs, full accessibility audits,
+  general SEO strategy, and product-growth work.
+- Moved version and repository metadata out of runtime `SKILL.md`.
+- Adopted the `webdesign-skill` repository/package name while preserving `webdesign` as the runtime
+  skill identifier.
+- Split Codex installation from the cross-agent `~/.agents/skills` target and made replacement
+  transactional.
+- Removed the generic TypeScript/JavaScript appendix from the visual-build reference and compressed
+  the activation router while retaining all direct routes.
 
 ## [1.2.0] — 2026-07-16
 
@@ -73,7 +93,8 @@ cross-link and anchor resolved, internal-tooling leakage guard — CI-enforced o
 - Docs set (`docs/`) — installation, usage, stages, recipes.
 - Visual guide (`site/`), deploys to webdesign-skill.vercel.app.
 
-[1.2.0]: https://github.com/gabros20/webdesign/releases/tag/v1.2.0
-[1.1.0]: https://github.com/gabros20/webdesign/releases/tag/v1.1.0
-[1.0.1]: https://github.com/gabros20/webdesign/releases/tag/v1.0.1
-[1.0.0]: https://github.com/gabros20/webdesign/releases/tag/v1.0.0
+[1.3.0]: https://github.com/gabros20/webdesign-skill/releases/tag/v1.3.0
+[1.2.0]: https://github.com/gabros20/webdesign-skill/releases/tag/v1.2.0
+[1.1.0]: https://github.com/gabros20/webdesign-skill/releases/tag/v1.1.0
+[1.0.1]: https://github.com/gabros20/webdesign-skill/releases/tag/v1.0.1
+[1.0.0]: https://github.com/gabros20/webdesign-skill/releases/tag/v1.0.0

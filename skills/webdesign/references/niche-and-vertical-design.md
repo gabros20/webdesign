@@ -1,5 +1,27 @@
 # Niche & Vertical Design
 
+Purpose: Adapt website structure, proof, and visual register to the expectations of a specific business vertical.
+
+Read when:
+- The request names a market, profession, risk profile, or premium-information balance.
+
+Skip when:
+- The request is generic craft work with no vertical-specific decision.
+
+Inputs:
+- Business model, audience stakes, buying questions, proof assets, and brand posture.
+
+Produces:
+- A vertical-specific structure, proof strategy, and premium-information setting.
+
+## Contents
+
+- The governing idea: the premium↔information dial
+- Cross-cutting doctrine
+- Vertical playbooks
+- Where each vertical sits on the brand↔info axis
+- How to use this reference
+
 How to design for a *specific* business, not "a website." The technique references answer *how to build a
 distinctive section*; this one answers *what an architect's site needs vs a law firm vs a SaaS* — the
 structure, the proof devices, and the visual register each niche's visitors actually respond to.

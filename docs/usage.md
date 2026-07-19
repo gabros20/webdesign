@@ -10,7 +10,8 @@ ready-to-paste prompts, see [recipes.md](recipes.md).
 Unlike a dispatch-style skill, `webdesign` takes no flags, dimensions, or config file — there's
 nothing to memorize before using it. It triggers one of two ways:
 
-- **Explicit**: `/webdesign` (or your host's slash-command equivalent).
+- **Explicit**: `$webdesign` in Codex, `/webdesign` in slash-command clients, or the equivalent
+  explicit form supported by the current host.
 - **Implicit**: natural design-task phrasing — "design a hero section", "art direction for this
   landing page", "author a DESIGN.md", "make this look premium / not generic / not
   AI-generated", "design review this build", "run a scored critique / go-no-go" — matched against
@@ -39,7 +40,7 @@ section. Full per-stage detail (references loaded, output, gate): [stages.md](st
 | 5 | **Art review** | The eye that set the direction judges the build section by section, at full resolution, and hands back an A0–A3 punch-list (or signs off). |
 | 6 | **Critique / QA gate** | A scored, severity-routed pass (Nielsen 0–40, cognitive load, personas, mechanical checks) that turns "looks good" into a go/no-go. |
 
-## Pick by job
+## Route by job
 
 Read only what the job requires — this table is the fast path from "what am I trying to do" to
 "which reference file(s)", independent of which stage you're nominally in.
@@ -118,10 +119,17 @@ wherever your project convention puts it:
 | Art review | A structured review record per round — verdict (`approve`/`revise`), per-section findings, an A0–A3 blocking/notes split. |
 | Critique / QA gate | A scored critique (Nielsen 0–40 + cognitive load + personas) with P0–P3 severity-routed findings and an explicit go/no-go. |
 
+## Completion and handoff
+
+The skill is complete only when requested artifacts exist, relevant viewports and states have been
+checked, material assumptions and unresolved work are recorded, and any claimed visual review
+names the rendered evidence actually inspected. Recommend adjacent capabilities without invoking
+them automatically.
+
 ## Complementary global skills (don't duplicate these)
 
-`webdesign` owns web design *direction, craft, build, and review*. Hand off to these for adjacent
-jobs:
+`webdesign` owns website design *direction, craft, appearance-producing build work, and visual
+review*. Recommend these installed capabilities for adjacent jobs; do not invoke them automatically:
 
 - **generate-image** / **generate-video** — actually generating the images/video/backgrounds a
   direction calls for. This skill decides *what asset a slot needs*; those skills produce it.

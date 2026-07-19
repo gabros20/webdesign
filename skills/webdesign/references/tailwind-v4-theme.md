@@ -1,5 +1,27 @@
 # Tailwind v4 theme namespaces — mapping DESIGN.md tokens for full, collision-free coverage
 
+Purpose: Map approved design tokens into Tailwind v4 namespaces without collisions or scale regressions.
+
+Read when:
+- A project uses Tailwind v4 and needs DESIGN.md tokens translated into generated utilities.
+
+Skip when:
+- The project does not use Tailwind or the task does not change the theme.
+
+Inputs:
+- DESIGN.md tokens, existing CSS theme, required utilities, and compatibility constraints.
+
+Produces:
+- A complete @theme mapping with preserved utility coverage and validation checklist.
+
+## Contents
+
+- 1. Namespace → utilities it powers (the complete set)
+- 2. Three mechanics that bite (the root of the `max-w` collapse)
+- 3. DESIGN.md → theme: the full-coverage recipe (two `@theme` blocks)
+- 4. Tailwind v4 default scales (use as the reference baseline for authored scales)
+- 5. Checklist (author + build)
+
 Tailwind v4 is configured in CSS: utilities are generated from **theme variables** declared in an
 `@theme { … }` block. Each variable lives in a **namespace** (`--color-*`, `--spacing-*`, …) and a
 namespace powers a family of utilities. To reconfigure the theme with your planned tokens

@@ -1,5 +1,28 @@
 # Art-direction review — judging a build against its design direction
 
+Purpose: Judge a rendered build against its approved visual direction and return an actionable punch list or sign-off.
+
+Read when:
+- A page is implemented and rendered evidence can be compared with DESIGN.md or another approved direction.
+
+Skip when:
+- No rendered evidence exists and the request is only for code correctness.
+
+Inputs:
+- Approved direction, runnable build, relevant viewports, and captured renders.
+
+Produces:
+- Evidence-backed A0-A3 findings, revision instructions, or visual sign-off.
+
+## Contents
+
+- What you judge against
+- Capture tooling — what this review physically needs
+- Procedure
+- Output shape
+- Acceptance
+- Boundaries
+
 The studio creative-review pass: the eye that set the visual direction (see
 [design-direction.md](design-direction.md)) checks the build before final correctness QA. You
 judge with taste, not a test runner. If you can't edit the code yourself, your job is to **see,

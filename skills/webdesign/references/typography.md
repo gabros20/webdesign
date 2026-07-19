@@ -1,5 +1,30 @@
 # Typography
 
+Purpose: Use typography as a deliberate visual and information-hierarchy device.
+
+Read when:
+- A section needs type scale, pairing, display treatment, readability, or fluid behavior.
+
+Skip when:
+- Typography is already fixed and the task concerns an unrelated visual device.
+
+Inputs:
+- Brand register, content hierarchy, available fonts, viewport range, and accessibility constraints.
+
+Produces:
+- A type system or section treatment with scale, pairing, measures, and implementation.
+
+## Contents
+
+- 1. Modular type scale (the backbone)
+- 2. Fluid typography with `clamp()`
+- 3. Oversized / display typography (type as the hero)
+- 4. Font pairing (deliberate contrast)
+- 5. Kinetic / variable-font typography (motion in the letters)
+- 6. Watermark / faint enlarged characters (ghost type as depth)
+- 7. Body readability (the unglamorous rule that sells the rest)
+- Quick recipe
+
 Type carries the personality of a section — make it a memorable element, not a neutral delivery vehicle.
 Each entry: **why → how → pitfall.** Hard limits that keep it from looking templated: **≤2 families,
 ≤3 sizes per section, body line length 45–75ch.**

@@ -1,5 +1,31 @@
 # Depth, Layering & Texture
 
+Purpose: Create premium spatial depth through planes, light, texture, shadow, and optional motion.
+
+Read when:
+- A section feels visually flat or needs deliberate foreground, midground, and background separation.
+
+Skip when:
+- The surface is a dense utility UI where added depth would reduce clarity.
+
+Inputs:
+- Section hierarchy, background, focal element, and performance constraints.
+
+Produces:
+- A layered depth treatment with CSS mechanisms and fallback behavior.
+
+## Contents
+
+- 1. Z-AXIS PLANE COMPOSITION (the foundation)
+- 2. NOISE / FILM-GRAIN TEXTURE (the unifier — highest ROI)
+- 3. AURORA / GRADIENT-MESH GLOW (midground light)
+- 4. LAYERED SHADOWS / ELEVATION (the "floating" feel)
+- 5. GLASSMORPHISM / FROSTED GLASS (foreground cards, tastefully)
+- 6. 3D TILT / PERSPECTIVE ON PRODUCT UI (midground hero)
+- 7. PARALLAX / DEPTH-ON-SCROLL (motion as the closer)
+- 8. NEUMORPHISM — know it, mostly avoid it
+- QUICK STACK ("make this section feel premium")
+
 The premium "Linear/Stripe/Vercel" feel is **stacked planes + soft light + a faint grain that unifies
 them**. Build depth in order: (1) establish a canvas, (2) glow a midground behind it (aurora), (3) float
 foreground cards on layered shadows / glass, (4) lay one shared grain layer over the whole section to

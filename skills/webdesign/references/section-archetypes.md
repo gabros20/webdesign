@@ -1,5 +1,27 @@
 # Structure & IA: sitemap, section blueprints, and the section catalog
 
+Purpose: Convert a content plan into a sitemap, navigation, page blueprints, and deduplicated section catalog.
+
+Read when:
+- The request structures a website or defines reusable section types before modeling and implementation.
+
+Skip when:
+- The sitemap and section schema are already approved and the task only styles or builds them.
+
+Inputs:
+- Content plan, route constraints, redirect requirements, page types, and reusable content shapes.
+
+Produces:
+- Target sitemap, navigation, footer, page blueprints, and stable section keys.
+
+## Contents
+
+- Why a catalog, not per-page ad-hoc sections
+- Procedure
+- Section sequence is IA — let the domain shape it
+- Acceptance checklist
+- Section archetype catalog
+
 How to turn a content plan — what pages exist, what's kept/changed/dropped, and what copy tier
 each gets — into the target **structure**: the sitemap, navigation, footer, an ordered
 per-page section blueprint, and — the centerpiece — a **deduplicated section catalog**. The

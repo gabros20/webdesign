@@ -1,0 +1,18 @@
+[
+  {"id":"positive-direction","prompt":"Give this fintech landing page a premium visual direction and write its DESIGN.md.","should_trigger":true},
+  {"id":"positive-section","prompt":"Design and code a hero section that does not look AI-generated.","should_trigger":true},
+  {"id":"positive-critique","prompt":"Critique the visual hierarchy and composition of this marketing page.","should_trigger":true},
+  {"id":"positive-art-review","prompt":"Review the rendered build against the approved design direction and return a punch list.","should_trigger":true},
+  {"id":"positive-theme","prompt":"Map these design tokens into our Tailwind v4 theme without collapsing content widths.","should_trigger":true},
+  {"id":"positive-ia","prompt":"Plan the sitemap, navigation, and reusable section catalog for this brand website.","should_trigger":true},
+  {"id":"positive-motion","prompt":"Add one restrained motion signature to this otherwise flat landing-page section.","should_trigger":true},
+  {"id":"positive-typo","prompt":"make teh webiste feel less templated and art direct every section", "should_trigger":true},
+  {"id":"negative-backend","prompt":"Design the tenant-isolation model and database schema for this SaaS product.","should_trigger":false},
+  {"id":"negative-state","prompt":"Implement optimistic cache updates and retry behavior in this React application.","should_trigger":false},
+  {"id":"negative-component-api","prompt":"Refactor this Button component API for polymorphism and composability.","should_trigger":false},
+  {"id":"negative-a11y","prompt":"Run a complete WCAG 2.2 screen-reader and keyboard audit.","should_trigger":false},
+  {"id":"negative-seo","prompt":"Create a six-month keyword, content, and backlink strategy for this company.","should_trigger":false},
+  {"id":"negative-growth","prompt":"Diagnose our activation funnel and prioritize experiments from these events.","should_trigger":false},
+  {"id":"negative-product","prompt":"Decide which customer problem our next product should solve.","should_trigger":false},
+  {"id":"negative-native","prompt":"Implement the approved onboarding flow in the production SwiftUI app.","should_trigger":false}
+]

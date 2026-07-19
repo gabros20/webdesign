@@ -1,5 +1,27 @@
 # Section Design Workflow
 
+Purpose: Select one bold visual move and the smallest craft-device set needed to design a distinctive section.
+
+Read when:
+- The request designs, composes, or builds one landing or marketing section.
+
+Skip when:
+- The request covers full-site information architecture or only final review.
+
+Inputs:
+- Section job, content hierarchy, direction, assets, and technical constraints.
+
+Produces:
+- A section concept, selected device routes, implementation plan, and anti-boring check.
+
+## Contents
+
+- The one idea everything serves
+- The device map — what to reach for, and where it's documented
+- Quick recipes (composite moves that reliably land)
+- The anti-boring checklist (run on every section before shipping)
+- Working method
+
 This is the craft layer for designing distinctive, non-templated webpage sections — the layered,
 intentional kind trending on Godly/Awwwards/Linear/Stripe/Vercel — plus the strategy layer for designing
 for a specific business niche (architect, law firm, SaaS, luxury, healthcare…). Use it when designing,

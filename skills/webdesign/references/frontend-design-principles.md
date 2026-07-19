@@ -1,5 +1,29 @@
 # Frontend design principles
 
+Purpose: Set an opinionated, brief-specific visual point of view and the constraints that keep it coherent.
+
+Read when:
+- A website needs direction, register, visual identity, or an anti-generic starting point.
+
+Skip when:
+- The task implements an already approved direction without revisiting design intent.
+
+Inputs:
+- Subject, audience, brand evidence, content, surface register, and constraints.
+
+Produces:
+- A defensible direction with palette, typography, layout, signature move, and restraint rules.
+
+## Contents
+
+- Ground it in the subject
+- Register: is the design the product, or does it serve it?
+- Design principles
+- Design with real assets, not invented ones
+- Process: brainstorm, explore, plan, critique, build, critique again
+- Restraint and self-critique
+- More on writing in design
+
 Approach this as the design lead at a small studio known for giving every client a visual identity
 that could not be mistaken for anyone else's. Assume the client has already rejected proposals
 that felt templated, and is paying for a distinctive point of view: make deliberate, opinionated

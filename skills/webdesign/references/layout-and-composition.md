@@ -1,5 +1,31 @@
 # Layout & Composition
 
+Purpose: Choose and implement a distinctive responsive composition for one website section.
+
+Read when:
+- A section needs grid structure, asymmetry, hierarchy, overlap, bleed, or whitespace decisions.
+
+Skip when:
+- The layout is approved and the task concerns a different device such as imagery or motion.
+
+Inputs:
+- Content hierarchy, viewport range, focal element, and surrounding section rhythm.
+
+Produces:
+- A selected layout pattern, responsive CSS mechanism, and known pitfalls.
+
+## Contents
+
+- 1. STRUCTURAL GRID TECHNIQUES
+- 2. BENTO GRID (the trending mixed-size card pattern)
+- 3. ASYMMETRY & BROKEN GRID
+- 4. OVERLAP, BLEED & OVERFLOW
+- 5. WHITESPACE & VISUAL RHYTHM
+- 6. VISUAL HIERARCHY & EYE-FLOW
+- 7. GESTALT PRINCIPLES FOR LAYOUT
+- 8. THE "PREMIUM SAAS" SYSTEM (Linear / Stripe / Vercel)
+- QUICK DECISION HEURISTICS
+
 Techniques for distinctive, non-templated section layout (Linear / Stripe / Vercel / Awwwards / Godly
 tier). Each entry: **why → how → example → pitfall.** Use one structural idea per section; break ~20%
 of a grid, not 100%.

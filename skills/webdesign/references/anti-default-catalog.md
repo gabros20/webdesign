@@ -1,5 +1,19 @@
 # Anti-default catalog — named AI design tells (2026)
 
+Purpose: Identify current visual patterns that make generated web work look generic or machine-produced.
+
+Read when:
+- A draft needs an anti-generic review or a route explicitly asks for named AI-design tells.
+
+Skip when:
+- The request concerns ordinary correctness rather than visual distinctiveness.
+
+Inputs:
+- A draft, screenshot, design direction, or implementation.
+
+Produces:
+- Specific default-pattern findings and deliberate replacements.
+
 The specific, current tells that mark a design as machine-generated — sharper than "avoid
 generic." Every model was trained on the same SaaS templates, so without active resistance you get
 the same defaults *regardless of subject*. Name them, then refuse them.

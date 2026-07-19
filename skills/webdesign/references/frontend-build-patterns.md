@@ -1,5 +1,37 @@
 # Building the frontend: scaffold, sections, theming, data, and QA
 
+Purpose: Translate approved website direction and section schemas into a runnable appearance layer in the existing stack.
+
+Read when:
+- The request asks to build the visual frontend, section registry, theme, assets, or rendered self-check.
+
+Skip when:
+- The work concerns backend behavior, application state, data architecture, or reusable component API design.
+
+Inputs:
+- Approved design, section catalog, content, assets, existing repository, and acceptance criteria.
+
+Produces:
+- Integrated visual frontend, section mapping, token application, and validation evidence.
+
+## Contents
+
+- Stack posture — the patterns are the contract, the stack is the example
+- Reference stack (the worked example)
+- Don't scaffold from scratch — start from a prebuilt template
+- Design system layers worth building once, reusing every time
+- Theming: pick a preset, then override token values
+- Sections: one client component per section key
+- Component-registry pattern for data-driven sections
+- Content + data wiring (static/local-content builds)
+- Clean up dev scaffolding before shipping
+- Craft gotchas (learned the hard way)
+- Visual end-to-end self-check
+- Iterative design-review loop
+- Acceptance checklist
+- HTML / JSX craft
+- CSS / Tailwind craft
+
 How to turn a design (a theme spec, a section catalog, per-page content) into a runnable,
 good-looking frontend. Covers scaffold conventions, the one-component-per-section discipline,
 applying a design spec as the Tailwind theme, interactivity/motion, asset handling, a visual
@@ -399,75 +431,3 @@ border-radius/borders instead of fetching an SVG/image for them.
 
 **Vendor prefixes.** Kill obsolete ones; let the toolchain add what's actually needed. If
 hand-writing any, put the standard property *after* the prefixed one.
-
-## Appendix: TypeScript / JavaScript craft
-
-Code hygiene for the worked example — engineering craft, not design doctrine. Nothing in this
-appendix changes a pixel; it keeps the code you ship maintainable. Skim or skip if your stack
-differs.
-
-**Readability and correctness over performance.** JavaScript is essentially never the bottleneck
-in a normal app — optimize image compression, network, and DOM/React reflows instead. Express
-intent with `filter`/`map`/`reduce` over hand-rolled index loops.
-
-```javascript
-// bad (faster, unreadable)         // good
-const r = []; let i=-1;             const isEven = n => n % 2 === 0;
-while(++i<len){ … r.push(n*n) }     const square = n => n * n;
-                                    const r = arr.filter(isEven).map(square);
-```
-
-**Statelessness / purity.** Keep functions pure: no side effects, no mutation, return new
-objects. This is also the React rule — derive, don't mutate; return new state.
-
-```javascript
-// bad  const merge = (target,...s) => Object.assign(target,...s);   // mutates target
-// good const merge = (...s) => Object.assign({}, ...s);
-```
-
-**Prefer native + the standard library.** `Array.from`, `Set`, spread, `Object.keys/entries`,
-`structuredClone`. Don't ship hand-rolled polyfills for things the baseline already covers.
-
-**Composition over nesting.** Pipe small functions instead of nesting calls; build small,
-reusable, composable functions.
-
-```javascript
-const pipe = (...fns) => x => fns.reduce((a, f) => f(a), x);
-const addThenMult = pipe(plus1, mult2);
-```
-
-**Higher-order functions — don't wrap needlessly.** `[1,2,3].map(String)`, not
-`.map(n => String(n))`.
-
-**Rest/spread over `arguments`/`apply`.** `(...nums) => nums.sort()` and `greet(...person)` — with
-arrow functions and spread, this is just how you write code now.
-
-**`const` > `let` > `var`.** Default to `const`; never `var`.
-
-**Conditions — early return.** Favor guard clauses / early `return` over deep `if/else` ladders
-and `switch`. Use plain early returns or a ternary — not an IIFE-as-expression trick:
-
-```typescript
-// good
-const grade = (result: number): Grade => {
-  if (result < 50) return "bad";
-  if (result < 90) return "good";
-  return "excellent";
-};
-```
-
-**Loops & data structures — judgment, not dogma.** Prefer array-prototype methods for
-transformation; a plain `for…of` is fine and clearer than forcing recursion (which risks stack
-overflow). Reach for `Map`/`Set` when you need keyed/unique collections or non-string keys — but
-plain objects/records are perfectly good for fixed-shape data. Avoid `for…in`; iterate
-`Object.keys/entries`.
-
-**Coercion — deliberate, not cargo-culted.** `x == null` to catch both `null`/`undefined` is
-acceptable; otherwise be explicit. In TypeScript, lean on the type system and `===`.
-
-**Readability — no clever tricks.** `if (!foo) doSomething()` over `foo || doSomething()`;
-`Math.floor(x)` over `~~x`. Don't obfuscate intent for a marginal byte saving.
-
-**Minimize dependencies.** Third-party code is code you don't know. Don't pull a library for a
-couple of one-line helpers (`unique = a => [...new Set(a)]`). Weigh every dependency against
-bundle size and what the framework already gives you.

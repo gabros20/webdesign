@@ -1,5 +1,35 @@
 # Sources — webdesign
 
+Purpose: Trace the provenance of techniques used across the webdesign references.
+
+Read when:
+- A user or maintainer asks where a technique came from or needs the external source.
+
+Skip when:
+- The task is applying a documented technique and does not require provenance.
+
+Inputs:
+- The technique or reference filename being traced.
+
+Produces:
+- A focused source list for verification or further reading.
+
+## Contents
+
+- color-and-rhythm.md
+- decoration.md
+- depth-and-texture.md
+- design-thinking.md
+- experimental-and-creative.md
+- frontend-build-patterns.md
+- imagery.md
+- layout-and-composition.md
+- motion-and-interaction.md
+- niche-and-vertical-design.md
+- persuasion-and-conversion.md
+- trust-proof-and-structure.md
+- typography.md
+
 Provenance for the technique references. Consolidated here so the citation lists don't cost
 tokens on every on-demand reference read.
 
